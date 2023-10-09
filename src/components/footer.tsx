@@ -145,12 +145,7 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li className="bg-slate-900 transition rounded-full w-12 h-12 btn-outline flex items-center justify-center">
-                  <Link
-                    href={
-                      "https://youtube.com/@GADGETRIVIEW?si=_BCcatEqQzPyn5aT"
-                    }
-                    target="_blank"
-                  >
+                  <Link href={"mailto:faelftauraeca@gmail.com"} target="_blank">
                     <GrMail size="1.5em" />
                   </Link>
                 </li>
