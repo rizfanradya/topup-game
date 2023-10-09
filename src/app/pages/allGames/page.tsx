@@ -1,14 +1,14 @@
 import NavbarBottom from "@/components/NavbarBottom";
 import NavbarTop from "@/components/navbarTop";
 
-const HomePage = () => {
+const AllGames = () => {
   return (
     <div>
       <NavbarTop />
-      <></>
+      AllGames
       <NavbarBottom />
     </div>
   );
 };
 
-export default HomePage;
+export default AllGames;
