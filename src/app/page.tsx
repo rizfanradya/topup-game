@@ -1,7 +1,7 @@
-import HomePage from "./pages/home/page";
+import BestSeller from "./pages/home/bestSeller/page";
 
 const Home = () => {
-  return <HomePage />;
+  return <BestSeller />;
 };
 
 export default Home;
