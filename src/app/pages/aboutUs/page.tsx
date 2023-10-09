@@ -9,8 +9,8 @@ const AboutUs = () => {
       <NavbarTop />
 
       <div className="tracking-wider pt-16">
-        <div className="bg-[url(/bgAboutUs.jpg)] text-slate-100 text-5xl font-semibold h-40">
-          <div className="w-full h-full backdrop-blur-sm flex items-center justify-center">
+        <div className="bg-[url(/bgAboutUs.jpg)] text-slate-100 text-3xl font-semibold h-40">
+          <div className="w-full h-full backdrop-blur-sm text-center flex items-center justify-center">
             <h1>TENTANG KAMI</h1>
           </div>
         </div>
