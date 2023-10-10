@@ -4,7 +4,12 @@ import NavbarTop from "@/components/navbarTop";
 const AllGames = () => {
   return (
     <div>
-      <NavbarTop />
+      <NavbarTop
+        onAllGames={undefined}
+        onHome={undefined}
+        activeHome={undefined}
+        activeAllGames={undefined}
+      />
       AllGames
       <NavbarBottom />
     </div>
