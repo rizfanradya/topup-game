@@ -132,7 +132,7 @@ const AllGames = () => {
     showData = <CardProducts data={filteredData} />;
   } else if (filteredData.length === 0) {
     showData = (
-      <div className="font-semibold text-xl tracking-wider alert alert-info">
+      <div className="font-semibold tracking-wider alert alert-info">
         MAAF, PRODUK YANG ANDA CARI TIDAK ADA!
       </div>
     );
@@ -140,17 +140,17 @@ const AllGames = () => {
 
   return (
     <div className="my-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col items-center md:justify-between gap-6 justify-center md:gap-0 md:flex-row">
         <h1 className="text-xl font-semibold text-slate-100">SEMUA PRODUK</h1>
 
-        <div className="flex gap-4">
+        <div className="flex gap-4 w-full md:w-max">
           <Controller
             name="search"
             control={control}
             defaultValue={""}
             render={({ field }) => (
               <input
-                className="input input-bordered input-info"
+                className="input input-bordered input-info w-full"
                 type="text"
                 autoComplete="off"
                 {...field}
