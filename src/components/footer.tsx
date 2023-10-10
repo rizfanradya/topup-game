@@ -62,19 +62,19 @@ const Footer = (props: DataProps) => {
         <div className="max-w-xl flex flex-col gap-6">
           <button
             onClick={onHome}
-            className="text-[22px] flex items-center font-semibold gap-2"
+            className="text-lg flex items-center font-semibold gap-2"
           >
             <Image
               className="rounded-full"
               src={"/logo.jpg"}
-              width={45}
-              height={45}
+              width={40}
+              height={40}
               alt="logo"
             />
             <h1>Warung Top Up Store</h1>
           </button>
 
-          <p className="text-white leading-6">
+          <p className="text-white leading-6 text-sm font-light">
             Top Up Game Favorit Kamu Di Warung Top Up Store Agar Main Game
             Semakin Seru. Pengiriman Cepat Dan Berbagai Methode Pembayaran Yang
             Lengkap. Tersedia Berbagai Macam Game Populer Seperti Mobile
@@ -183,7 +183,7 @@ const Footer = (props: DataProps) => {
         </div>
       </footer>
 
-      <footer className="footer footer-center gap-6 py-6 px-2 bg-base-300 text-base-content mb-14 md:mb-0 md:text-base md:flex justify-around">
+      <footer className="footer footer-center gap-6 py-6 px-2 bg-base-300 text-base-content mb-14 md:mb-0 md:flex justify-around">
         <p>© 2023 Warung Top Up Store. Semua Hak Cipta</p>
         <div className="text-warning flex">
           <button

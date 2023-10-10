@@ -141,7 +141,7 @@ const HomePage = () => {
       <Slider {...settings}>
         {dataCarousel.map((doc, index) => (
           <Image
-            className="h-48 md:h-72 object-cover rounded-xl"
+            className="h-44 md:h-64 object-cover rounded-xl"
             key={index}
             src={`/${doc.src}`}
             alt={doc.alt}
@@ -151,28 +151,32 @@ const HomePage = () => {
         ))}
       </Slider>
 
-      <div className="my-4">
-        <div className="border-b-2 border-slate-200 flex items-center gap-6 py-1">
+      <div className="my-6">
+        <div className="flex items-center gap-2">
           <button
             onClick={onBestSeller}
-            className={`${
-              bestSeller ? "text-info border-b-2 border-info" : ""
-            } hover:text-info hover:border-b-2 border-info transition font-medium h-12`}
+            className={`border py-2 px-3 rounded-full transition text-white text-xs ${
+              bestSeller
+                ? "border-sky-500 bg-sky-500"
+                : "border-slate-600 hover:bg-slate-600"
+            }`}
           >
             Best Seller
           </button>
 
           <button
             onClick={onVoucher}
-            className={`${
-              voucher ? "text-info border-b-2 border-info" : ""
-            } hover:text-info hover:border-b-2 border-info transition font-medium h-12`}
+            className={`border py-2 px-3 rounded-full transition text-white text-xs ${
+              voucher
+                ? "border-sky-500 bg-sky-500"
+                : "border-slate-600 hover:bg-slate-600"
+            }`}
           >
             Voucher Game
           </button>
         </div>
 
-        <div className="my-8">
+        <div className="my-4">
           <CardProducts data={data} />
         </div>
       </div>

@@ -95,20 +95,21 @@ type VoucherData = {
 type ProductOrVoucherData = ProductData | VoucherData;
 
 const AllGames = () => {
-  const [bestSeller, setBestSeller] = useState<boolean>(true);
+  const [allGames, setAllGames] = useState<boolean>(true);
   const [voucher, setVoucher] = useState<boolean>(false);
+  const [pulsa, setPulsa] = useState<boolean>(false);
 
-  const onBestSeller = () => {
-    setBestSeller(true);
+  const onAllGames = () => {
+    setAllGames(true);
     setVoucher(false);
   };
   const onVoucher = () => {
-    setBestSeller(false);
+    setAllGames(false);
     setVoucher(true);
   };
 
   let data: ProductOrVoucherData[];
-  if (bestSeller) {
+  if (allGames) {
     data = dataProducts;
   } else if (voucher) {
     data = dataVoucher;
@@ -138,51 +139,66 @@ const AllGames = () => {
     );
   }
 
-  return (
-    <div className="my-6">
-      <div className="flex flex-col items-center md:justify-between gap-6 justify-center md:gap-0 md:flex-row">
-        <h1 className="text-xl font-semibold text-slate-100">SEMUA PRODUK</h1>
+  let placeholder: string;
+  if (allGames) {
+    placeholder = "Cari Game...";
+  } else if (voucher) {
+    placeholder = "Cari Voucher...";
+  } else if (pulsa) {
+    placeholder = "Cari Pulsa...";
+  } else {
+    placeholder = "";
+  }
 
-        <div className="flex gap-4 w-full md:w-max">
+  return (
+    <>
+      <div className="flex flex-col items-center md:justify-between gap-6 justify-center md:gap-0 md:flex-row">
+        <h1 className="text-lg font-medium text-slate-100">SEMUA PRODUK</h1>
+
+        <div className="flex gap-4 w-full md:max-w-xs">
           <Controller
             name="search"
             control={control}
             defaultValue={""}
             render={({ field }) => (
               <input
-                className="input input-bordered input-info w-full"
+                className="input input-bordered input-info rounded-full h-9 w-full"
                 type="text"
                 autoComplete="off"
                 {...field}
-                placeholder="Cari Game, Voucher, atau Pulsa..."
+                placeholder={placeholder}
               />
             )}
           />
         </div>
       </div>
 
-      <div className="border-b-2 border-slate-200 flex items-center gap-6 py-1">
+      <div className="flex items-center gap-2 mt-4">
         <button
-          onClick={onBestSeller}
-          className={`${
-            bestSeller ? "text-info border-b-2 border-info" : ""
-          } hover:text-info hover:border-b-2 border-info transition font-medium h-12`}
+          onClick={onAllGames}
+          className={`border px-3 py-2 rounded-full transition text-white text-xs ${
+            allGames
+              ? "border-sky-500 bg-sky-500"
+              : "border-slate-600 hover:bg-slate-600"
+          }`}
         >
           Best Seller
         </button>
 
         <button
           onClick={onVoucher}
-          className={`${
-            voucher ? "text-info border-b-2 border-info" : ""
-          } hover:text-info hover:border-b-2 border-info transition font-medium h-12`}
+          className={`border px-3 py-2 rounded-full transition text-white text-xs ${
+            voucher
+              ? "border-sky-500 bg-sky-500"
+              : "border-slate-600 hover:bg-slate-600"
+          }`}
         >
           Voucher Game
         </button>
       </div>
 
       <div className="my-4 m-auto">{showData}</div>
-    </div>
+    </>
   );
 };
 

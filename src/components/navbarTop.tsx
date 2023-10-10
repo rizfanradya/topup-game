@@ -26,16 +26,16 @@ const NavbarTop = (props: DataProps) => {
     <div className="bg-base-300 navbar px-6 flex justify-between items-center fixed z-10">
       <button
         onClick={onHome}
-        className="text-[22px] flex items-center font-semibold gap-2"
+        className="text-lg flex items-center font-semibold gap-2"
       >
         <Image
           className="rounded-full"
           src={"/logo.jpg"}
-          width={40}
-          height={40}
+          width={35}
+          height={35}
           alt="logo"
         />
-        <h1>Warung Top Up Store</h1>
+        <h1>Wartop Store</h1>
       </button>
 
       <div className="gap-6 items-center hidden md:flex">

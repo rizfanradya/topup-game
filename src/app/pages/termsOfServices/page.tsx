@@ -110,16 +110,16 @@ const TermsOfServices = () => {
         <div className="w-11/12 mx-auto my-10">
           <div className="flex flex-col gap-8 p-6 rounded-xl bg-slate-900 text-white md:p-8">
             {data.map((doc, index) => (
-              <ol className="flex flex-col gap-4" key={index}>
-                <li className="font-semibold text-lg">
+              <ol className="flex flex-col gap-3" key={index}>
+                <li className="font-medium">
                   {index + 1}. {doc.title}
                 </li>
                 {doc.subTitle.map((subDoc, subIndex) => (
                   <ol className="flex flex-col gap-2" key={subIndex}>
-                    <li className="pl-4 font-medium">
+                    <li className="pl-4">
                       {index + 1}.{subIndex + 1}. {subDoc.title}
                     </li>
-                    <p className="pl-8 text-sm">{subDoc.text}</p>
+                    <p className="pl-8 text-sm font-light">{subDoc.text}</p>
                   </ol>
                 ))}
               </ol>
