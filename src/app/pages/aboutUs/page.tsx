@@ -3,7 +3,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 const AboutUs = () => {
   return (
     <div className="tracking-wider">
-      <div className="bg-[url(/bgAboutUs.jpg)] text-slate-100 text-3xl font-semibold h-52 rounded-xl overflow-hidden">
+      <div className="bg-[url('/bgAboutUs.jpg')] text-slate-100 text-3xl font-semibold h-52 rounded-xl overflow-hidden">
         <div className="w-full h-full backdrop-blur-sm text-center flex items-center justify-center">
           <h1>TENTANG KAMI</h1>
         </div>
