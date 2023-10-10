@@ -26,7 +26,10 @@ const BestSeller = () => {
         {data.map((doc, index) => (
           <Link key={index} href={doc.href}>
             <div
-              className={`bg-[url('/products/${doc.bg}')] bg-cover bg-center bg-no-repeat rounded-lg w-44 h-60 flex items-center justify-center overflow-hidden group hover:ring-4 ring-slate-100 transition`}
+              style={{
+                backgroundImage: `url(/products/${doc.bg})`,
+              }}
+              className="bg-cover bg-center bg-no-repeat rounded-lg w-44 h-60 flex items-center justify-center overflow-hidden group hover:ring-4 ring-slate-100 transition"
             >
               <Image
                 className="w-4/5 opacity-50 group-hover:hidden"
