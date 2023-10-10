@@ -127,6 +127,17 @@ const AllGames = () => {
     );
   });
 
+  let showData: any;
+  if (filteredData.length) {
+    showData = <CardProducts data={filteredData} />;
+  } else if (filteredData.length === 0) {
+    showData = (
+      <div className="font-semibold text-xl tracking-wider alert alert-info">
+        MAAF, PRODUK YANG ANDA CARI TIDAK ADA!
+      </div>
+    );
+  }
+
   return (
     <div className="my-6">
       <div className="flex items-center justify-between">
@@ -170,9 +181,7 @@ const AllGames = () => {
         </button>
       </div>
 
-      <div className="my-4">
-        <CardProducts data={filteredData} />
-      </div>
+      <div className="my-4 m-auto">{showData}</div>
     </div>
   );
 };
