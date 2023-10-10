@@ -6,7 +6,12 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 const AboutUs = () => {
   return (
     <>
-      <NavbarTop />
+      <NavbarTop
+        onAllGames={undefined}
+        onHome={undefined}
+        activeHome={undefined}
+        activeAllGames={undefined}
+      />
 
       <div className="tracking-wider pt-16">
         <div className="bg-[url(/bgAboutUs.jpg)] text-slate-100 text-3xl font-semibold h-40">

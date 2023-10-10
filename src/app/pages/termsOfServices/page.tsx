@@ -99,7 +99,12 @@ const TermsOfServices = () => {
 
   return (
     <>
-      <NavbarTop />
+      <NavbarTop
+        onAllGames={undefined}
+        onHome={undefined}
+        activeHome={undefined}
+        activeAllGames={undefined}
+      />
 
       <div className="tracking-wider pt-16">
         <div className="bg-[url(/bgAboutUs.jpg)] bg-center text-slate-100 text-3xl font-semibold h-40">
