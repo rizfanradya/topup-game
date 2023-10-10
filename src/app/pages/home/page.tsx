@@ -151,7 +151,7 @@ const HomePage = () => {
         ))}
       </Slider>
 
-      <div className="my-14">
+      <div className="my-4">
         <div className="border-b-2 border-slate-200 flex items-center gap-6 py-1">
           <button
             onClick={onBestSeller}
