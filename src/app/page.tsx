@@ -75,7 +75,7 @@ const Main = () => {
         onSearchInvoice={onSearchInvoice}
         activeSearchInvoice={searchInvoice}
       />
-      <div className="pt-20 w-11/12 m-auto">{contentPage}</div>
+      <div className="pt-20 w-[95%] m-auto">{contentPage}</div>
       <Footer
         onHome={onHome}
         onAllGames={onAllGames}
