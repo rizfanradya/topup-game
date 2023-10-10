@@ -4,45 +4,58 @@ import { usePathname } from "next/navigation";
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { GiGamepad } from "react-icons/gi";
 
-const NavbarBottom = () => {
+type DataProps = {
+  onAllGames: any;
+  onHome: any;
+  activeHome: any;
+  activeAllGames: any;
+  onSearchInvoice: any;
+  activeSearchInvoice: any;
+};
+
+const NavbarBottom = (props: DataProps) => {
   const pathname = usePathname();
+  const {
+    onAllGames,
+    onHome,
+    activeHome,
+    activeAllGames,
+    onSearchInvoice,
+    activeSearchInvoice,
+  } = props;
 
   return (
-    <ul className="btm-nav md:hidden border-t-2 border-slate-500">
-      <li>
-        <Link
-          className={`${
-            pathname === "/" ? "active text-accent" : ""
-          } hover:text-accent transition`}
-          href={"/"}
-          title="HOME"
-        >
-          <AiFillHome size="1.6em" />
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={`${
-            pathname === "/pages/allGames" ? "active text-accent" : ""
-          } hover:text-accent transition`}
-          href={"/pages/allGames"}
-          title="SEMUA GAME"
-        >
-          <GiGamepad size="2.1em" />
-        </Link>
-      </li>
-      <li>
-        <Link
-          className={`${
-            pathname === "/pages/searchInvoice" ? "active text-accent" : ""
-          } hover:text-accent transition`}
-          href={"/"}
-          title="LACAK PESANAN"
-        >
-          <AiOutlineSearch size="1.8em" />
-        </Link>
-      </li>
-    </ul>
+    <div className="btm-nav md:hidden border-t-2 border-slate-500">
+      <button
+        className={`${
+          activeHome ? "active text-accent" : ""
+        } hover:text-accent transition`}
+        title="HOME"
+        onClick={onHome}
+      >
+        <AiFillHome size="1.5em" />
+      </button>
+
+      <button
+        className={`${
+          activeAllGames ? "active text-accent" : ""
+        } hover:text-accent transition`}
+        title="SEMUA GAME"
+        onClick={onAllGames}
+      >
+        <GiGamepad size="2em" />
+      </button>
+
+      <button
+        onClick={onSearchInvoice}
+        className={`${
+          activeSearchInvoice ? "active text-accent" : ""
+        } hover:text-accent transition`}
+        title="LACAK PESANAN"
+      >
+        <AiOutlineSearch size="1.8em" />
+      </button>
+    </div>
   );
 };
 

@@ -1,7 +1,3 @@
-import NavbarBottom from "@/components/NavbarBottom";
-import Footer from "@/components/footer";
-import NavbarTop from "@/components/navbarTop";
-
 const TermsOfServices = () => {
   const data = [
     {
@@ -99,15 +95,8 @@ const TermsOfServices = () => {
 
   return (
     <>
-      <NavbarTop
-        onAllGames={undefined}
-        onHome={undefined}
-        activeHome={undefined}
-        activeAllGames={undefined}
-      />
-
-      <div className="tracking-wider pt-16">
-        <div className="bg-[url(/bgAboutUs.jpg)] bg-center text-slate-100 text-3xl font-semibold h-40">
+      <div className="tracking-wider">
+        <div className="bg-[url(/bgAboutUs.jpg)] bg-center text-slate-100 text-3xl font-semibold h-52 rounded-xl overflow-hidden">
           <div className="w-full h-full backdrop-blur-sm text-center flex items-center justify-center">
             <h1>SYARAT & KETENTUAN PENGGUNA</h1>
           </div>
@@ -133,9 +122,6 @@ const TermsOfServices = () => {
           </div>
         </div>
       </div>
-
-      <Footer />
-      <NavbarBottom />
     </>
   );
 };

@@ -8,52 +8,61 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const Footer = () => {
-  const settings = {
-    dots: false,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 5,
-    slidesToScroll: 2,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    arrows: false,
-  };
+const settings = {
+  dots: false,
+  infinite: true,
+  speed: 1000,
+  slidesToShow: 5,
+  slidesToScroll: 2,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  arrows: false,
+};
+const metodePembayaran = [
+  { src: "ovo" },
+  { src: "dana" },
+  { src: "shopeepay" },
+  { src: "gopay" },
+  { src: "linkaja" },
+  { src: "qris" },
+  { src: "indomaret" },
+  { src: "alfamart" },
+  { src: "permataBank" },
+  { src: "mandiri" },
+  { src: "bni" },
+  { src: "bri" },
+];
+const topUpLainnya = [
+  { href: "/", value: "Mobile Legend" },
+  { href: "/", value: "Free Fire" },
+  { href: "/", value: "Pubg Mobile" },
+];
 
-  const metodePembayaran = [
-    { src: "ovo" },
-    { src: "dana" },
-    { src: "shopeepay" },
-    { src: "gopay" },
-    { src: "linkaja" },
-    { src: "qris" },
-    { src: "indomaret" },
-    { src: "alfamart" },
-    { src: "permataBank" },
-    { src: "mandiri" },
-    { src: "bni" },
-    { src: "bri" },
-  ];
+type DataProps = {
+  onHome: any;
+  onAllGames: any;
+  onSearchInvoice: any;
+  onAboutUs: any;
+  onTermsOnServices: any;
+};
+
+const Footer = (props: DataProps) => {
+  const { onHome, onAllGames, onSearchInvoice, onAboutUs, onTermsOnServices } =
+    props;
 
   const petaSitus = [
-    { href: "/", value: "Beranda" },
-    { href: "/pages/allGames", value: "Semua Game" },
-    { href: "/pages/searchInvoice", value: "Daftar Pesanan" },
-  ];
-
-  const topUpLainnya = [
-    { href: "/", value: "Mobile Legend" },
-    { href: "/", value: "Free Fire" },
-    { href: "/", value: "Pubg Mobile" },
+    { onClick: onHome, value: "Beranda" },
+    { onClick: onAllGames, value: "Semua Game" },
+    { onClick: onSearchInvoice, value: "Daftar Pesanan" },
   ];
 
   return (
     <>
       <footer className="footer py-14 px-4 md:px-20 lg:px-28 bg-base-200 text-base-content">
         <div className="max-w-xl flex flex-col gap-6">
-          <Link
+          <button
+            onClick={onHome}
             className="text-2xl flex items-center font-semibold gap-2"
-            href={"/"}
           >
             <Image
               className="rounded-full"
@@ -63,7 +72,7 @@ const Footer = () => {
               alt="logo"
             />
             <h1>Warung Top Up Store</h1>
-          </Link>
+          </button>
 
           <p className="text-white text-lg">
             Top Up Game Favorit Kamu Di Warung Top Up Store Agar Main Game
@@ -85,12 +94,12 @@ const Footer = () => {
                 <div className="flex flex-col gap-4">
                   {petaSitus.map((doc) => (
                     <li key={doc.value}>
-                      <Link
+                      <button
                         className="text-slate-200 hover:text-slate-500 transition"
-                        href={doc.href}
+                        onClick={doc.onClick}
                       >
                         {doc.value}
-                      </Link>
+                      </button>
                     </li>
                   ))}
                 </div>
@@ -177,19 +186,19 @@ const Footer = () => {
       <footer className="footer footer-center gap-6 py-6 px-2 bg-base-300 text-base-content mb-14 md:mb-0 md:text-base md:flex justify-around">
         <p>© 2023 Warung Top Up Store. Semua Hak Cipta</p>
         <div className="text-warning flex">
-          <Link
+          <button
+            onClick={onAboutUs}
             className="transition hover:text-warning-content"
-            href={"/pages/aboutUs"}
           >
             Tentang Kami
-          </Link>
+          </button>
           {"|"}
-          <Link
+          <button
+            onClick={onTermsOnServices}
             className="transition hover:text-warning-content"
-            href={"/pages/termsOfServices"}
           >
             Syarat & Ketentuan Pengguna
-          </Link>
+          </button>
         </div>
       </footer>
     </>
