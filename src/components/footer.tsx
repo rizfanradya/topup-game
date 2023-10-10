@@ -62,19 +62,19 @@ const Footer = (props: DataProps) => {
         <div className="max-w-xl flex flex-col gap-6">
           <button
             onClick={onHome}
-            className="text-2xl flex items-center font-semibold gap-2"
+            className="text-[22px] flex items-center font-semibold gap-2"
           >
             <Image
               className="rounded-full"
               src={"/logo.jpg"}
-              width={50}
-              height={50}
+              width={45}
+              height={45}
               alt="logo"
             />
             <h1>Warung Top Up Store</h1>
           </button>
 
-          <p className="text-white text-lg">
+          <p className="text-white leading-6">
             Top Up Game Favorit Kamu Di Warung Top Up Store Agar Main Game
             Semakin Seru. Pengiriman Cepat Dan Berbagai Methode Pembayaran Yang
             Lengkap. Tersedia Berbagai Macam Game Populer Seperti Mobile
@@ -89,7 +89,7 @@ const Footer = (props: DataProps) => {
         <div>
           <div className="md:flex gap-6">
             <div className="flex gap-6">
-              <ul className="text-lg">
+              <ul>
                 <h3 className="footer-title">PETA SITUS</h3>
                 <div className="flex flex-col gap-4">
                   {petaSitus.map((doc) => (
@@ -105,7 +105,7 @@ const Footer = (props: DataProps) => {
                 </div>
               </ul>
 
-              <ul className="text-lg">
+              <ul>
                 <h3 className="footer-title">TOP UP LAINNYA</h3>
                 <div className="flex flex-col gap-4">
                   {topUpLainnya.map((doc) => (
@@ -122,7 +122,7 @@ const Footer = (props: DataProps) => {
               </ul>
             </div>
 
-            <ul className="text-lg mt-8 md:mt-0">
+            <ul className="mt-8 md:mt-0">
               <h3 className="footer-title">IKUTI KAMI</h3>
               <div className="flex md:grid md:grid-cols-2 gap-3">
                 <li className="bg-slate-900 transition rounded-full w-12 h-12 btn-secondary btn-outline flex items-center justify-center">
@@ -162,7 +162,7 @@ const Footer = (props: DataProps) => {
             </ul>
           </div>
 
-          <div className="text-lg mt-6 grid gap-4">
+          <div className="mt-6 grid gap-4">
             <h3 className="footer-title">METODE PEMBAYARAN</h3>
             <div className="max-w-md overflow-hidden">
               <Slider {...settings}>

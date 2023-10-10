@@ -1,6 +1,4 @@
 "use client";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { GiGamepad } from "react-icons/gi";
 
@@ -14,7 +12,6 @@ type DataProps = {
 };
 
 const NavbarBottom = (props: DataProps) => {
-  const pathname = usePathname();
   const {
     onAllGames,
     onHome,

@@ -96,7 +96,12 @@ const TermsOfServices = () => {
   return (
     <>
       <div className="tracking-wider">
-        <div className="bg-[url('/bgAboutUs.jpg')] bg-center text-slate-100 text-3xl font-semibold h-52 rounded-xl overflow-hidden">
+        <div
+          style={{
+            backgroundImage: "url(/bgAboutUs.jpg)",
+          }}
+          className="bg-center text-slate-100 text-2xl font-semibold h-52 rounded-xl overflow-hidden"
+        >
           <div className="w-full h-full backdrop-blur-sm text-center flex items-center justify-center">
             <h1>SYARAT & KETENTUAN PENGGUNA</h1>
           </div>
@@ -106,15 +111,15 @@ const TermsOfServices = () => {
           <div className="flex flex-col gap-8 p-6 rounded-xl bg-slate-900 text-white md:p-8">
             {data.map((doc, index) => (
               <ol className="flex flex-col gap-4" key={index}>
-                <li className="font-semibold text-xl">
+                <li className="font-semibold text-lg">
                   {index + 1}. {doc.title}
                 </li>
                 {doc.subTitle.map((subDoc, subIndex) => (
                   <ol className="flex flex-col gap-2" key={subIndex}>
-                    <li className="pl-4 font-medium text-lg">
+                    <li className="pl-4 font-medium">
                       {index + 1}.{subIndex + 1}. {subDoc.title}
                     </li>
-                    <p className="pl-8">{subDoc.text}</p>
+                    <p className="pl-8 text-sm">{subDoc.text}</p>
                   </ol>
                 ))}
               </ol>

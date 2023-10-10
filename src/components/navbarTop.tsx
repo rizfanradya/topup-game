@@ -26,7 +26,7 @@ const NavbarTop = (props: DataProps) => {
     <div className="bg-base-300 navbar px-6 flex justify-between items-center fixed z-10">
       <button
         onClick={onHome}
-        className="text-xl flex items-center font-semibold gap-2"
+        className="text-[22px] flex items-center font-semibold gap-2"
       >
         <Image
           className="rounded-full"
