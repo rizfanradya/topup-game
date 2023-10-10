@@ -17,6 +17,20 @@ const Voucher = () => {
       thumb: "voucher/steam/steamthumb.png",
       href: "/",
     },
+    {
+      data: "PlayStation Network",
+      dev: "PlayStation",
+      bg: "voucher/playstation/playstation.jpg",
+      thumb: "voucher/playstation/playstationthumb.png",
+      href: "/",
+    },
+    {
+      data: "Google Play",
+      dev: "Playstore",
+      bg: "voucher/googleplay/googleplay.jpg",
+      thumb: "voucher/googleplay/googleplaythumb.png",
+      href: "/",
+    },
   ];
 
   return (
