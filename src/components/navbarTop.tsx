@@ -5,8 +5,16 @@ import Image from "next/image";
 import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { GiGamepad } from "react-icons/gi";
 
-const NavbarTop = () => {
+type DataProps = {
+  onAllGames: any;
+  onHome: any;
+  activeHome: any;
+  activeAllGames: any;
+};
+
+const NavbarTop = (props: DataProps) => {
   const pathname = usePathname();
+  const { onAllGames, onHome, activeHome, activeAllGames } = props;
 
   return (
     <div className="bg-base-300 navbar px-6 flex justify-between items-center fixed z-10">
@@ -26,26 +34,26 @@ const NavbarTop = () => {
 
       <ul className="gap-6 items-center hidden md:flex">
         <li>
-          <Link
+          <button
             className={`${
-              pathname === "/" ? "active text-accent" : ""
+              activeHome ? "active text-accent" : ""
             } hover:text-accent transition`}
-            href={"/"}
             title="HOME"
+            onClick={onHome}
           >
             <AiFillHome size="1.5em" />
-          </Link>
+          </button>
         </li>
         <li>
-          <Link
+          <button
             className={`${
-              pathname === "/pages/allGames" ? "active text-accent" : ""
+              activeAllGames ? "active text-accent" : ""
             } hover:text-accent transition`}
-            href={"/pages/allGames"}
             title="SEMUA GAME"
+            onClick={onAllGames}
           >
             <GiGamepad size="2em" />
-          </Link>
+          </button>
         </li>
         <li>
           <Link

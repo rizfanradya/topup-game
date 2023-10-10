@@ -111,14 +111,26 @@ const Home = () => {
 
   const [bestSeller, setBestSeller] = useState<boolean>(true);
   const [voucher, setVoucher] = useState<boolean>(false);
+  const [allGames, setAllGames] = useState<boolean>(false);
+  const [viewCarousel, setViewCarousel] = useState<boolean>(true);
 
-  const onBestSeller = () => {
+  const onHome = () => {
+    setViewCarousel(true);
     setBestSeller(true);
     setVoucher(false);
+    setAllGames(false);
   };
   const onVoucher = () => {
+    setViewCarousel(true);
     setBestSeller(false);
     setVoucher(true);
+    setAllGames(false);
+  };
+  const onAllGames = () => {
+    setViewCarousel(false);
+    setBestSeller(false);
+    setVoucher(false);
+    setAllGames(true);
   };
 
   let data: ProductOrVoucherData[];
@@ -143,27 +155,34 @@ const Home = () => {
 
   return (
     <>
-      <NavbarTop />
+      <NavbarTop
+        onAllGames={onAllGames}
+        onHome={onHome}
+        activeHome={viewCarousel}
+        activeAllGames={allGames}
+      />
 
       <div className="w-11/12 m-auto pt-20">
-        <Slider {...settings}>
-          {dataCarousel.map((doc, index) => (
-            <Image
-              className="h-48 md:h-72 object-cover rounded-xl"
-              key={index}
-              src={`/${doc.src}`}
-              alt={doc.alt}
-              width={1000}
-              height={1000}
-            />
-          ))}
-        </Slider>
+        {viewCarousel ? (
+          <Slider {...settings}>
+            {dataCarousel.map((doc, index) => (
+              <Image
+                className="h-48 md:h-72 object-cover rounded-xl"
+                key={index}
+                src={`/${doc.src}`}
+                alt={doc.alt}
+                width={1000}
+                height={1000}
+              />
+            ))}
+          </Slider>
+        ) : undefined}
 
         <div className="my-14">
           <ul className="border-b-2 border-slate-200 flex items-center gap-6 py-1">
             <li>
               <button
-                onClick={onBestSeller}
+                onClick={onHome}
                 className={`${
                   bestSeller ? "text-info border-b-2 border-info" : ""
                 } hover:text-info hover:border-b-2 border-info transition font-medium h-12`}
