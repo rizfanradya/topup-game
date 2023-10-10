@@ -1,5 +1,3 @@
-import Link from "next/link";
-import Image from "next/image";
 import HomePageLayouts from "../Layout";
 import CardProducts from "@/app/components/cardProducts";
 
