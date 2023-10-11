@@ -1,27 +1,173 @@
+"use client";
 import Navbar from "@/app/navbar";
+import { useState } from "react";
+import { Controller, useForm } from "react-hook-form";
 import { BiSearchAlt } from "react-icons/bi";
+import { MdPayment } from "react-icons/md";
+
+const data = [
+  {
+    id: +6281379892960,
+    img: "products/pubg/pubg.jpeg",
+    product: "pubg mobile",
+    price: "Rp 150.000",
+    payment: "indomaret",
+    date: "12/09/2023",
+    status: "berhasil",
+  },
+  {
+    id: +6288747482005,
+    img: "voucher/steam/steam.jpg",
+    product: "steam wallet",
+    price: "Rp 250.000",
+    payment: "alfamart",
+    date: "1/09/2023",
+    status: "gagal",
+  },
+  {
+    id: +6287824898643,
+    img: "products/freefire/freefire.jpg",
+    product: "free fire",
+    price: "Rp 50.000",
+    payment: "dana",
+    date: "11/09/2023",
+    status: "expired",
+  },
+  {
+    id: +6281379892960,
+    img: "products/valorant/valorant.jpg",
+    product: "valorant",
+    price: "Rp 550.000",
+    payment: "ovo",
+    date: "21/09/2023",
+    status: "proses",
+  },
+  {
+    id: +6281379892960,
+    img: "products/valorant/valorant.jpg",
+    product: "valorant",
+    price: "Rp 550.000",
+    payment: "ovo",
+    date: "20/09/2023",
+    status: "proses",
+  },
+  {
+    id: +6287824898643,
+    img: "voucher/googleplay/googleplay.jpg",
+    product: "google play",
+    price: "Rp 350.000",
+    payment: "mandiri",
+    date: "19/09/2023",
+    status: "berhasil",
+  },
+  {
+    id: +6212345678912,
+    img: "voucher/pointblank/pointblank.jpeg",
+    product: "point blank",
+    price: "Rp 90.000",
+    payment: "shopeepay",
+    date: "13/08/2023",
+    status: "gagal",
+  },
+];
 
 const SearchInvoice = () => {
+  const statusBadge = (status: string) => {
+    switch (status) {
+      case "berhasil":
+        return "badge-success";
+      case "gagal":
+        return "badge-error";
+      case "expired":
+        return "badge-warning";
+      case "proses":
+        return "badge-info";
+      default:
+        return "badge-outline";
+    }
+  };
+
+  const { control, watch } = useForm();
+  const telepon = watch("telepon", "");
+
+  const convertDateToValidFormat = (dateString: string) => {
+    const parts = dateString.split("/");
+    if (parts.length === 3) {
+      const [day, month, year] = parts;
+      return `${month} ${day}, ${year}`;
+    }
+    return dateString;
+  };
+
   return (
     <Navbar>
-      <div className="form-control w-full flex flex-col gap-8 p-10">
+      <div className="form-control w-full flex flex-col gap-2 p-4">
         <label htmlFor="lacakpesanan" className="font-medium text-slate-100">
           LACAK PESANAN DENGAN NOMOR TELEPON
         </label>
-        <div className="input-group w-full">
-          <input
-            id="lacakpesanan"
-            type="text"
-            placeholder="Masukkan nomor handphonemu cth:(08123456789)"
-            className="input input-bordered w-full bg-slate-100 text-sm text-black h-10"
-          />
-          <button className="h-10 grid justify-center items-center btn-square btn-info">
-            <BiSearchAlt size="1.5em" />
-          </button>
-        </div>
+
+        <Controller
+          name="telepon"
+          control={control}
+          defaultValue={"+62"}
+          render={({ field }) => (
+            <input
+              {...field}
+              id="lacakpesanan"
+              type="text"
+              placeholder="Masukkan nomor handphonemu cth:(+628123456789)"
+              className="input input-bordered rounded-full w-full h-10"
+            />
+          )}
+        />
       </div>
 
-      <div></div>
+      <div className="mb-14 px-4 grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {data
+          .filter((docData) => docData.id === +telepon)
+          .sort(
+            (a, b) =>
+              (new Date(convertDateToValidFormat(b.date)) as any) -
+              (new Date(convertDateToValidFormat(a.date)) as any)
+          )
+          .map((doc, index) => (
+            <div
+              className="border border-slate-400 flex p-2 rounded-lg items-center justify-between"
+              key={index}
+            >
+              <div className="flex gap-1 items-center">
+                <div
+                  style={{
+                    backgroundImage: `url(/${doc.img})`,
+                  }}
+                  className="bg-cover bg-center bg-no-repeat rounded-lg w-14 h-14"
+                ></div>
+
+                <div className="flex flex-col justify-between gap-1 p-1">
+                  <h2 className="font-semibold text-white">
+                    {doc.product.toUpperCase()}
+                  </h2>
+                  <p className="text-sm font-medium">{doc.price}</p>
+                  <p className="flex items-center gap-1 font-medium text-xs">
+                    <MdPayment size="1.5em" className="text-yellow-300" />{" "}
+                    {doc.payment.toUpperCase()}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex flex-col justify-around h-full p-1">
+                <div
+                  className={`badge ${statusBadge(
+                    doc.status
+                  )} text-xs font-semibold`}
+                >
+                  {doc.status.toUpperCase()}
+                </div>
+                <p className="text-xs">{doc.date}</p>
+              </div>
+            </div>
+          ))}
+      </div>
     </Navbar>
   );
 };
