@@ -1,8 +1,9 @@
+import Navbar from "@/app/navbar";
 import { BiSearchAlt } from "react-icons/bi";
 
 const SearchInvoice = () => {
   return (
-    <div>
+    <Navbar>
       <div className="form-control w-full flex flex-col gap-8 p-10">
         <label htmlFor="lacakpesanan" className="font-medium text-slate-100">
           LACAK PESANAN DENGAN NOMOR TELEPON
@@ -21,7 +22,7 @@ const SearchInvoice = () => {
       </div>
 
       <div></div>
-    </div>
+    </Navbar>
   );
 };
 

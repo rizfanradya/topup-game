@@ -1,3 +1,5 @@
+import Navbar from "@/app/navbar";
+
 const TermsOfServices = () => {
   const data = [
     {
@@ -94,7 +96,7 @@ const TermsOfServices = () => {
   ];
 
   return (
-    <>
+    <Navbar>
       <div className="tracking-wider">
         <div
           style={{
@@ -127,7 +129,7 @@ const TermsOfServices = () => {
           </div>
         </div>
       </div>
-    </>
+    </Navbar>
   );
 };
 

@@ -1,6 +1,9 @@
 "use client";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ReactNode } from "react";
+import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { AiOutlineInstagram, AiFillYoutube } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
@@ -18,6 +21,15 @@ const settings = {
   autoplaySpeed: 2000,
   arrows: false,
 };
+const petaSitus = [
+  { href: "/", value: "Beranda" },
+  { href: "/pages/searchInvoice", value: "Daftar Pesanan" },
+];
+const topUpLainnya = [
+  { href: "/", value: "Mobile Legend" },
+  { href: "/", value: "Free Fire" },
+  { href: "/", value: "Pubg Mobile" },
+];
 const metodePembayaran = [
   { src: "ovo" },
   { src: "dana" },
@@ -32,33 +44,58 @@ const metodePembayaran = [
   { src: "bni" },
   { src: "bri" },
 ];
-const topUpLainnya = [
-  { href: "/", value: "Mobile Legend" },
-  { href: "/", value: "Free Fire" },
-  { href: "/", value: "Pubg Mobile" },
-];
 
-type DataProps = {
-  onHome: any;
-  onSearchInvoice: any;
-  onAboutUs: any;
-  onTermsOnServices: any;
-};
-
-const Footer = (props: DataProps) => {
-  const { onHome, onSearchInvoice, onAboutUs, onTermsOnServices } = props;
-
-  const petaSitus = [
-    { onClick: onHome, value: "Beranda" },
-    { onClick: onSearchInvoice, value: "Daftar Pesanan" },
-  ];
+type DataProps = { children: ReactNode };
+const Navbar = (props: DataProps) => {
+  const { children } = props;
+  const pathname = usePathname();
 
   return (
     <>
+      {/* navbar top start */}
+      <div className="bg-base-300 navbar px-6 flex justify-between items-center fixed z-10">
+        <Link href={"/"} className="flex items-center font-semibold gap-2">
+          <Image
+            className="rounded-full"
+            src={"/logo.jpg"}
+            width={35}
+            height={35}
+            alt="logo"
+          />
+          <h1>Warung Top Up Store</h1>
+        </Link>
+
+        <div className="gap-6 items-center hidden md:flex">
+          <Link
+            className={`${
+              pathname === "/" ? "active text-accent" : ""
+            } hover:text-accent transition`}
+            title="HOME"
+            href={"/"}
+          >
+            <AiFillHome size="1.5em" />
+          </Link>
+
+          <Link
+            className={`${
+              pathname === "/pages/searchInvoice" ? "active text-accent" : ""
+            } hover:text-accent transition`}
+            title="LACAK PESANAN"
+            href={"/pages/searchInvoice"}
+          >
+            <AiOutlineSearch size="1.7em" />
+          </Link>
+        </div>
+      </div>
+      {/* navbar top end */}
+
+      <div className="pt-20 mx-4">{children}</div>
+
+      {/* footer start */}
       <footer className="footer py-14 px-4 md:px-20 lg:px-28 bg-base-200 text-base-content">
         <div className="max-w-xl flex flex-col gap-6">
-          <button
-            onClick={onHome}
+          <Link
+            href={"/"}
             className="text-lg flex items-center font-semibold gap-2"
           >
             <Image
@@ -69,7 +106,7 @@ const Footer = (props: DataProps) => {
               alt="logo"
             />
             <h1>Warung Top Up Store</h1>
-          </button>
+          </Link>
 
           <p className="text-white leading-6 text-[13px] font-light">
             Top Up Game Favorit Kamu Di Warung Top Up Store Agar Main Game
@@ -91,12 +128,12 @@ const Footer = (props: DataProps) => {
                 <div className="flex flex-col gap-4 text-xs">
                   {petaSitus.map((doc) => (
                     <li key={doc.value}>
-                      <button
+                      <Link
+                        href={doc.href}
                         className="text-slate-200 hover:text-slate-500 transition"
-                        onClick={doc.onClick}
                       >
                         {doc.value}
-                      </button>
+                      </Link>
                     </li>
                   ))}
                 </div>
@@ -183,23 +220,48 @@ const Footer = (props: DataProps) => {
       <footer className="footer footer-center gap-6 py-6 px-2 bg-base-300 text-base-content mb-14 md:mb-0 md:flex justify-around">
         <p className="text-sm">© 2023 Warung Top Up Store. Semua Hak Cipta</p>
         <div className="text-warning flex">
-          <button
-            onClick={onAboutUs}
+          <Link
+            href={"/pages/aboutUs"}
             className="transition hover:text-warning-content"
           >
             Tentang Kami
-          </button>
+          </Link>
           {"|"}
-          <button
-            onClick={onTermsOnServices}
+          <Link
+            href={"/pages/termsOfServices"}
             className="transition hover:text-warning-content"
           >
             Syarat & Ketentuan Pengguna
-          </button>
+          </Link>
         </div>
       </footer>
+      {/* footer end */}
+
+      {/* navbar bottom start */}
+      <div className="btm-nav md:hidden border-t-2 border-slate-500">
+        <Link
+          href={"/"}
+          className={`${
+            pathname === "/" ? "active text-accent" : ""
+          } hover:text-accent transition`}
+          title="HOME"
+        >
+          <AiFillHome size="1.3em" />
+        </Link>
+
+        <Link
+          href={"/pages/searchInvoice"}
+          className={`${
+            pathname === "/pages/searchInvoice" ? "active text-accent" : ""
+          } hover:text-accent transition`}
+          title="LACAK PESANAN"
+        >
+          <AiOutlineSearch size="1.6em" />
+        </Link>
+      </div>
+      {/* navbar bottom end */}
     </>
   );
 };
 
-export default Footer;
+export default Navbar;
