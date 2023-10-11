@@ -35,7 +35,7 @@ const NavbarTop = (props: DataProps) => {
           height={35}
           alt="logo"
         />
-        <h1>Wartop Store</h1>
+        <h1>Warung Top Up Store</h1>
       </button>
 
       <div className="gap-6 items-center hidden md:flex">
