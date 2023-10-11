@@ -4,23 +4,14 @@ import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
 import { GiGamepad } from "react-icons/gi";
 
 type DataProps = {
-  onAllGames: any;
   onHome: any;
   activeHome: any;
-  activeAllGames: any;
   onSearchInvoice: any;
   activeSearchInvoice: any;
 };
 
 const NavbarTop = (props: DataProps) => {
-  const {
-    onAllGames,
-    onHome,
-    activeHome,
-    activeAllGames,
-    onSearchInvoice,
-    activeSearchInvoice,
-  } = props;
+  const { onHome, activeHome, onSearchInvoice, activeSearchInvoice } = props;
 
   return (
     <div className="bg-base-300 navbar px-6 flex justify-between items-center fixed z-10">
@@ -47,16 +38,6 @@ const NavbarTop = (props: DataProps) => {
           onClick={onHome}
         >
           <AiFillHome size="1.5em" />
-        </button>
-
-        <button
-          className={`${
-            activeAllGames ? "active text-accent" : ""
-          } hover:text-accent transition`}
-          title="SEMUA GAME"
-          onClick={onAllGames}
-        >
-          <GiGamepad size="2em" />
         </button>
 
         <button

@@ -5,6 +5,8 @@ import "slick-carousel/slick/slick-theme.css";
 import CardProducts from "@/app/components/cardProducts";
 import Image from "next/image";
 import { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import CardProductsHot from "@/app/components/cardProductsHot";
 
 type ProductData = {
   data: string;
@@ -114,21 +116,39 @@ const dataCarousel = [
 ];
 
 const HomePage = () => {
-  const [bestSeller, setBestSeller] = useState<boolean>(true);
+  const [games, setGames] = useState<boolean>(true);
   const [voucher, setVoucher] = useState<boolean>(false);
+  const [pulsa, setPulsa] = useState<boolean>(false);
 
   const onBestSeller = () => {
-    setBestSeller(true);
+    setGames(true);
     setVoucher(false);
+    setPulsa(false);
+  };
+  const onVoucher = () => {
+    setGames(false);
+    setVoucher(true);
+    setPulsa(false);
+  };
+  const onPulsa = () => {
+    setGames(false);
+    setVoucher(false);
+    setPulsa(true);
   };
 
-  const onVoucher = () => {
-    setBestSeller(false);
-    setVoucher(true);
-  };
+  let placeholder: string;
+  if (games) {
+    placeholder = "Cari Top Up Game...";
+  } else if (voucher) {
+    placeholder = "Cari Voucher Game...";
+  } else if (pulsa) {
+    placeholder = "Cari Pulsa...";
+  } else {
+    placeholder = "";
+  }
 
   let data: ProductOrVoucherData[];
-  if (bestSeller) {
+  if (games) {
     data = dataProducts;
   } else if (voucher) {
     data = dataVoucher;
@@ -136,12 +156,36 @@ const HomePage = () => {
     data = [];
   }
 
+  const { control, watch } = useForm();
+  const searchValue = watch("search", "");
+  const filteredData = data.filter((item) => {
+    const { data, dev } = item;
+    const searchKeyword = searchValue.toLowerCase();
+    return (
+      data.toLowerCase().includes(searchKeyword) ||
+      dev.toLowerCase().includes(searchKeyword)
+    );
+  });
+
+  let limitedData = data.slice(0, 6);
+
+  let showData: any;
+  if (filteredData.length) {
+    showData = <CardProducts data={filteredData} />;
+  } else if (filteredData.length === 0) {
+    showData = (
+      <div className="font-semibold tracking-wider alert alert-info">
+        MAAF, PRODUK TIDAK DITEMUKAN!
+      </div>
+    );
+  }
+
   return (
     <>
       <Slider {...settings}>
         {dataCarousel.map((doc, index) => (
           <Image
-            className="h-44 md:h-64 object-cover rounded-xl"
+            className="h-44 md:h-64 object-cover rounded-xl mb-4"
             key={index}
             src={`/${doc.src}`}
             alt={doc.alt}
@@ -151,17 +195,39 @@ const HomePage = () => {
         ))}
       </Slider>
 
-      <div className="my-6">
+      <div className="mb-4">
+        <h1 className="text-lg font-medium text-slate-100">🔥 POPULER</h1>
+        <CardProductsHot data={limitedData} />
+      </div>
+
+      <div className="flex gap-4 w-full mb-4">
+        <Controller
+          name="search"
+          control={control}
+          defaultValue={""}
+          render={({ field }) => (
+            <input
+              className="input input-bordered input-info rounded-full h-9 w-full"
+              type="text"
+              autoComplete="off"
+              {...field}
+              placeholder={placeholder}
+            />
+          )}
+        />
+      </div>
+
+      <div>
         <div className="flex items-center gap-2">
           <button
             onClick={onBestSeller}
             className={`border py-2 px-3 rounded-full transition text-white text-xs ${
-              bestSeller
+              games
                 ? "border-sky-500 bg-sky-500"
                 : "border-slate-600 hover:bg-slate-600"
             }`}
           >
-            Best Seller
+            Top Up Game
           </button>
 
           <button
@@ -174,12 +240,21 @@ const HomePage = () => {
           >
             Voucher Game
           </button>
-        </div>
 
-        <div className="my-4">
-          <CardProducts data={data} />
+          <button
+            onClick={onPulsa}
+            className={`border py-2 px-3 rounded-full transition text-white text-xs ${
+              pulsa
+                ? "border-sky-500 bg-sky-500"
+                : "border-slate-600 hover:bg-slate-600"
+            }`}
+          >
+            Pulsa
+          </button>
         </div>
       </div>
+
+      <div className="my-4">{showData}</div>
     </>
   );
 };

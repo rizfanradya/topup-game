@@ -40,19 +40,16 @@ const topUpLainnya = [
 
 type DataProps = {
   onHome: any;
-  onAllGames: any;
   onSearchInvoice: any;
   onAboutUs: any;
   onTermsOnServices: any;
 };
 
 const Footer = (props: DataProps) => {
-  const { onHome, onAllGames, onSearchInvoice, onAboutUs, onTermsOnServices } =
-    props;
+  const { onHome, onSearchInvoice, onAboutUs, onTermsOnServices } = props;
 
   const petaSitus = [
     { onClick: onHome, value: "Beranda" },
-    { onClick: onAllGames, value: "Semua Game" },
     { onClick: onSearchInvoice, value: "Daftar Pesanan" },
   ];
 
