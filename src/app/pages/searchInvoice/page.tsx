@@ -101,8 +101,8 @@ const SearchInvoice = () => {
 
   return (
     <Navbar>
-      <div className="form-control w-full flex flex-col gap-2 p-4">
-        <label htmlFor="lacakpesanan" className="font-medium text-slate-100">
+      <div className="form-control w-full flex flex-col gap-2 pb-4">
+        <label htmlFor="lacakpesanan" className="font-medium text-sm">
           LACAK PESANAN DENGAN NOMOR TELEPON
         </label>
 
@@ -132,7 +132,7 @@ const SearchInvoice = () => {
           )
           .map((doc, index) => (
             <div
-              className="border border-slate-400 flex p-2 rounded-lg items-center justify-between"
+              className="border border-slate-400 flex p-2 rounded-xl items-center justify-between"
               key={index}
             >
               <div className="flex gap-1 items-center">
@@ -144,7 +144,7 @@ const SearchInvoice = () => {
                 ></div>
 
                 <div className="flex flex-col justify-between gap-1 p-1">
-                  <h2 className="font-semibold text-white">
+                  <h2 className="font-medium text-sm text-white">
                     {doc.product.toUpperCase()}
                   </h2>
                   <p className="text-sm font-medium">{doc.price}</p>
