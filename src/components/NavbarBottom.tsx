@@ -20,7 +20,7 @@ const NavbarBottom = (props: DataProps) => {
         title="HOME"
         onClick={onHome}
       >
-        <AiFillHome size="1.5em" />
+        <AiFillHome size="1.3em" />
       </button>
 
       <button
@@ -30,7 +30,7 @@ const NavbarBottom = (props: DataProps) => {
         } hover:text-accent transition`}
         title="LACAK PESANAN"
       >
-        <AiOutlineSearch size="1.8em" />
+        <AiOutlineSearch size="1.6em" />
       </button>
     </div>
   );

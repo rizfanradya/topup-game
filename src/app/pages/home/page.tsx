@@ -196,7 +196,7 @@ const HomePage = () => {
       </Slider>
 
       <div className="mb-4">
-        <h1 className="text-lg font-medium text-slate-100">🔥 POPULER</h1>
+        <h1 className="font-medium text-slate-100">🔥 POPULER</h1>
         <CardProductsHot data={limitedData} />
       </div>
 
@@ -207,7 +207,7 @@ const HomePage = () => {
           defaultValue={""}
           render={({ field }) => (
             <input
-              className="input input-bordered input-info rounded-full h-9 w-full"
+              className="input input-bordered input-info rounded-full h-8 w-full text-xs"
               type="text"
               autoComplete="off"
               {...field}
@@ -221,7 +221,7 @@ const HomePage = () => {
         <div className="flex items-center gap-2">
           <button
             onClick={onBestSeller}
-            className={`border py-2 px-3 rounded-full transition text-white text-xs ${
+            className={`border py-2 px-3 rounded-full transition text-white text-[10px] ${
               games
                 ? "border-sky-500 bg-sky-500"
                 : "border-slate-600 hover:bg-slate-600"
@@ -232,7 +232,7 @@ const HomePage = () => {
 
           <button
             onClick={onVoucher}
-            className={`border py-2 px-3 rounded-full transition text-white text-xs ${
+            className={`border py-2 px-3 rounded-full transition text-white text-[10px] ${
               voucher
                 ? "border-sky-500 bg-sky-500"
                 : "border-slate-600 hover:bg-slate-600"
@@ -243,7 +243,7 @@ const HomePage = () => {
 
           <button
             onClick={onPulsa}
-            className={`border py-2 px-3 rounded-full transition text-white text-xs ${
+            className={`border py-2 px-3 rounded-full transition text-white text-[10px] ${
               pulsa
                 ? "border-sky-500 bg-sky-500"
                 : "border-slate-600 hover:bg-slate-600"
