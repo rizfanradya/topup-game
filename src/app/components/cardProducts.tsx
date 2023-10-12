@@ -14,14 +14,14 @@ const CardProducts = (props: DataProps) => {
   const { data } = props;
 
   return (
-    <div className="flex justify-center gap-2 md:gap-4 flex-wrap">
+    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 gap-2 md:gap-4">
       {data.map((doc, index) => (
         <Link key={index} href={doc.href}>
           <div
             style={{
               backgroundImage: `url(/${doc.bg})`,
             }}
-            className="bg-cover bg-center bg-no-repeat rounded-lg w-24 h-32 md:w-36 md:h-52 flex items-center justify-center overflow-hidden group hover:ring-4 ring-slate-100 transition"
+            className="bg-cover bg-center bg-no-repeat rounded-lg h-32 md:h-52 flex items-center justify-center overflow-hidden group hover:ring-4 ring-slate-100 transition"
           >
             <Image
               className="w-4/5 opacity-75 group-hover:hidden"

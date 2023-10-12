@@ -23,7 +23,7 @@ const AboutUs = () => {
               <div className="text-white backdrop-blur-md rounded-3xl absolute bottom-0 p-4">
                 <p className="font-semibold text-xl">Rafael</p>
                 <p className="font-medium">Owner</p>
-                <p className="mt-5 text-xs font-light">
+                <p className="mt-5 text-xs font-light text-justify">
                   Sebagai Owner, Rafael mengawasi strategi dan pelaksanaan
                   Warung Top Up Store.com agar perusahaan mencapai tujuan
                   bisnisnya.

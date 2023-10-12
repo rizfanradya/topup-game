@@ -92,7 +92,7 @@ const Navbar = (props: DataProps) => {
       <div className="pt-20 mx-4">{children}</div>
 
       {/* footer start */}
-      <footer className="footer py-14 px-4 md:px-20 lg:px-28 bg-base-200 text-base-content">
+      <footer className="footer py-14 grid justify-center p-4 md:px-20 bg-base-200 text-base-content">
         <div className="max-w-xl flex flex-col gap-6">
           <Link
             href={"/"}
@@ -108,7 +108,7 @@ const Navbar = (props: DataProps) => {
             <h1>Warung Top Up Store</h1>
           </Link>
 
-          <p className="text-white leading-6 text-[13px] font-light">
+          <p className="text-white leading-6 text-[13px] font-light text-justify">
             Top Up Game Favorit Kamu Di Warung Top Up Store Agar Main Game
             Semakin Seru. Pengiriman Cepat Dan Berbagai Methode Pembayaran Yang
             Lengkap. Tersedia Berbagai Macam Game Populer Seperti Mobile
@@ -158,7 +158,7 @@ const Navbar = (props: DataProps) => {
 
             <ul className="mt-8 md:mt-0">
               <h3 className="footer-title text-sm">IKUTI KAMI</h3>
-              <div className="flex md:grid md:grid-cols-2 gap-3">
+              <div className="grid grid-flow-col md:grid-flow-row md:grid-cols-2 gap-3">
                 <li className="bg-slate-900 transition rounded-full w-12 h-12 btn-secondary btn-outline flex items-center justify-center">
                   <Link
                     href={
