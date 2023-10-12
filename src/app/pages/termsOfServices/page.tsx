@@ -109,7 +109,7 @@ const TermsOfServices = () => {
           </div>
         </div>
 
-        <div className="w-11/12 mx-auto my-10 text-justify">
+        <div className="mx-auto my-10 text-justify">
           <div className="flex flex-col gap-8 p-6 rounded-xl bg-slate-900 text-white md:p-8">
             {data.map((doc, index) => (
               <ol className="flex flex-col gap-3" key={index}>
