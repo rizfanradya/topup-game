@@ -9,11 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "firebase": "^10.4.0",
-    "firebaseui": "^6.1.0",
+    "@types/bcrypt": "^5.0.0",
+    "bcrypt": "^5.1.1",
     "flowbite-react": "^0.6.4",
     "mongoose": "^7.6.1",
     "next": "13.5.4",
+    "next-auth": "^4.23.2",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
