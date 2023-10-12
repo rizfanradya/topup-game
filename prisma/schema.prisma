@@ -11,9 +11,7 @@ datasource db {
 }
 
 model admin {
-  id        Int      @id @default(autoincrement())
-  username  String
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id       Int    @id @default(autoincrement())
+  username String
+  password String
 }
