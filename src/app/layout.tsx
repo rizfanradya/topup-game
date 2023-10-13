@@ -1,6 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
+import AuthProvider from "./sessionProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -18,8 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="tracking-wide">
-      <body className={poppins.className}>{children}</body>
-    </html>
+    <AuthProvider>
+      <html lang="en" className="tracking-wide">
+        <body className={poppins.className}>{children}</body>
+      </html>
+    </AuthProvider>
   );
 }
