@@ -3,9 +3,8 @@ import { connectMongoDB } from "@/utils/mongo";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
-import { NextApiHandler, NextApiRequest, NextApiResponse } from "next";
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
@@ -48,8 +47,5 @@ export const authOptions: NextAuthOptions = {
   },
 };
 
-const handler: NextApiHandler = (req: NextApiRequest, res: NextApiResponse) => {
-  return NextAuth(req, res, authOptions);
-};
-
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };
