@@ -1,8 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
-import { useSession } from "next-auth/react";
+import { useSession, signIn, signOut } from "next-auth/react";
 import Loading from "../loading";
-import { signIn } from "next-auth/react";
 
 const AdminPage = () => {
   const { data: session, status } = useSession();
@@ -24,6 +23,9 @@ const AdminPage = () => {
   return (
     <div className="w-screen h-screen grid justify-center items-center">
       <p>SELAMAT DATANG DIHALAMAN ADMIN</p>
+      <button className="btn btn-outline btn-warning" onClick={() => signOut()}>
+        LOGOUT
+      </button>
     </div>
   );
 };
