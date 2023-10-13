@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
-import { connectMongoDB } from "@/utils/mongodb";
+import { connectMongoDB } from "@/utils/mongo";
 import adminModel from "@/models/admin";
 
 export async function POST(req: Request) {
