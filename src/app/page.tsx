@@ -141,7 +141,7 @@ const Main = () => {
   if (games) {
     placeholder = "Cari Top Up Game...";
   } else if (voucher) {
-    placeholder = "Cari Voucher Game...";
+    placeholder = "Cari Voucher...";
   } else if (pulsa) {
     placeholder = "Cari Pulsa...";
   } else {
@@ -168,7 +168,9 @@ const Main = () => {
     );
   });
 
-  let limitedData = data.slice(0, 6);
+  const hotGames = dataProducts.slice(0, 4);
+  const hotVoucher = dataVoucher.slice(0, 4);
+  const popular = [...hotGames, ...hotVoucher];
 
   let showData: any;
   if (filteredData.length) {
@@ -198,7 +200,7 @@ const Main = () => {
 
       <div className="mb-4">
         <h1 className="font-medium text-slate-100">🔥 POPULER</h1>
-        <CardProductsHot data={limitedData} />
+        <CardProductsHot data={popular} />
       </div>
 
       <div className="flex gap-4 w-full mb-4">
@@ -239,7 +241,7 @@ const Main = () => {
                 : "border-slate-600 hover:bg-slate-600"
             }`}
           >
-            Voucher Game
+            Voucher
           </button>
 
           <button
