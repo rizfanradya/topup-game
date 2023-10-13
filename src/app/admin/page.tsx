@@ -6,7 +6,7 @@ const AdminPage = async () => {
   //       "Content-Type": "application/json",
   //     },
   //     body: JSON.stringify({
-  //       username: "admin2",
+  //       username: "admin",
   //       password: "gET5lTr-YvAJJwV_bT3Whw",
   //     }),
   //   });
