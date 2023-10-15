@@ -1,9 +1,8 @@
 import Navbar from "@/app/navbar";
-import { PrismaClient } from "@prisma/client";
+import prisma from "@/utils/prisma";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const AboutUs = async () => {
-  const prisma = new PrismaClient();
   const data = await prisma.aboutus.findMany();
 
   return (

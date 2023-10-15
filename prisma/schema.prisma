@@ -14,6 +14,8 @@ model admins {
   id       String @id @default(auto()) @map("_id") @db.ObjectId
   username String
   password String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model aboutus {
@@ -23,19 +25,25 @@ model aboutus {
   desc    String
   address String
   image   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model termOfServices {
   id        String     @id @default(auto()) @map("_id") @db.ObjectId
   title     String
-  subTitles subTitle[]
+  subContent termOfServicesSubcontent[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-model subTitle {
+model termOfServicesSubcontent {
   id    String @id @default(auto()) @map("_id") @db.ObjectId
   title String
   text  String
 
-  termOfServices   termOfServices? @relation(fields: [termOfServicesId], references: [id])
-  termOfServicesId String?         @db.ObjectId
+  termOfServices   termOfServices @relation(fields: [termOfServicesId], references: [id])
+  termOfServicesId String         @db.ObjectId
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
