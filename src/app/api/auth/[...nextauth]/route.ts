@@ -1,8 +1,7 @@
-import adminModel from "@/models/admin";
-import { connectMongoDB } from "@/utils/mongo";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcrypt";
+import { PrismaClient } from "@prisma/client";
 
 const authOptions: NextAuthOptions = {
   session: {
@@ -21,12 +20,12 @@ const authOptions: NextAuthOptions = {
           username: string;
           password: string;
         };
-        await connectMongoDB();
-        const user = await adminModel.findOne({ username });
-        if (!user) throw new Error("email mismatch");
-        const passwordMatch = await bcrypt.compare(password, user.password);
+        const prisma = new PrismaClient();
+        const user = await prisma.admins.findMany();
+        if (!user[0].username) throw new Error("email mismatch");
+        const passwordMatch = await bcrypt.compare(password, user[0].password);
         if (!passwordMatch) throw new Error("password mismatch");
-        return { username: user.username, id: user.id, role: user.role };
+        return { username: user[0].username, id: user[0].id };
       },
     }),
   ],

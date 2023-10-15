@@ -8,6 +8,7 @@ import CardProductsHot from "./components/cardProductsHot";
 import { Controller, useForm } from "react-hook-form";
 import CardProducts from "./components/cardProducts";
 import { useState } from "react";
+import axios from "axios";
 
 const settings = {
   dots: false,
@@ -182,6 +183,22 @@ const Main = () => {
       </div>
     );
   }
+
+  axios
+    .get(
+      `https://v1.apigames.id/merchant/${process.env.NEXT_PUBLIC_APIGAMES_MERCHANT_ID}?signature=${process.env.NEXT_PUBLIC_APIGAMES_SIGNATURE}`
+    )
+    .then((res) => console.log(res))
+    .catch((error) => console.log(error))
+    .finally(() => console.log("selesai"));
+
+  axios
+    .get(
+      `https://v1.apigames.id/merchant/${process.env.NEXT_PUBLIC_APIGAMES_MERCHANT_ID}/cek-username/mobilelegend?user_id=88148365612493&signature=${process.env.NEXT_PUBLIC_APIGAMES_SIGNATURE}`
+    )
+    .then((res) => console.log(res))
+    .catch((error) => console.log(error))
+    .finally(() => console.log("selesai"));
 
   return (
     <Navbar>
