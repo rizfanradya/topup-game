@@ -23,7 +23,7 @@ const settings = {
 };
 const petaSitus = [
   { href: "/", value: "Beranda" },
-  { href: "/pages/searchInvoice", value: "Daftar Pesanan" },
+  { href: "/searchInvoice", value: "Daftar Pesanan" },
 ];
 const topUpLainnya = [
   { href: "/", value: "Mobile Legend" },
@@ -78,10 +78,10 @@ const Navbar = (props: DataProps) => {
 
           <Link
             className={`${
-              pathname === "/pages/searchInvoice" ? "active text-accent" : ""
+              pathname === "/searchInvoice" ? "active text-accent" : ""
             } hover:text-accent transition`}
             title="LACAK PESANAN"
-            href={"/pages/searchInvoice"}
+            href={"/searchInvoice"}
           >
             <AiOutlineSearch size="1.7em" />
           </Link>
@@ -221,14 +221,14 @@ const Navbar = (props: DataProps) => {
         <p className="text-sm">© 2023 Warung Top Up Store. Semua Hak Cipta</p>
         <div className="text-warning flex">
           <Link
-            href={"/pages/aboutUs"}
+            href={"/aboutUs"}
             className="transition hover:text-warning-content"
           >
             Tentang Kami
           </Link>
           {"|"}
           <Link
-            href={"/pages/termsOfServices"}
+            href={"/termsOfServices"}
             className="transition hover:text-warning-content"
           >
             Syarat & Ketentuan Pengguna
@@ -250,9 +250,9 @@ const Navbar = (props: DataProps) => {
         </Link>
 
         <Link
-          href={"/pages/searchInvoice"}
+          href={"/searchInvoice"}
           className={`${
-            pathname === "/pages/searchInvoice" ? "active text-accent" : ""
+            pathname === "/searchInvoice" ? "active text-accent" : ""
           } hover:text-accent transition`}
           title="LACAK PESANAN"
         >

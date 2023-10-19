@@ -1,8 +1,6 @@
 "use client";
 import Navbar from "@/app/navbar";
-import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { BiSearchAlt } from "react-icons/bi";
 import { MdPayment } from "react-icons/md";
 
 const data = [

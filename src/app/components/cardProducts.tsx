@@ -1,7 +1,8 @@
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 type ProductData = {
+  id: string;
   href: string;
   bg: string;
   thumb: string;
@@ -15,8 +16,8 @@ const CardProducts = (props: DataProps) => {
 
   return (
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 gap-2 md:gap-4">
-      {data.map((doc, index) => (
-        <Link key={index} href={doc.href}>
+      {data.map((doc) => (
+        <Link key={doc.id} href={doc.href}>
           <div
             style={{
               backgroundImage: `url(/${doc.bg})`,

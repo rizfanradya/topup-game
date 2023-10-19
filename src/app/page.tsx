@@ -28,94 +28,98 @@ const dataCarousel = [
 ];
 const dataProducts = [
   {
+    id: "1",
     data: "Mobile Legends",
     dev: "Moontoon",
     bg: "products/mobileLegends/mobileLegends.jpg",
     thumb: "products/mobileLegends/mobileLegendsThumb.png",
-    href: "/",
+    href: "/payment/mobile-legends",
   },
   {
+    id: "2",
     data: "Free Fire",
     dev: "Garena",
     bg: "products/freefire/freefire.jpg",
     thumb: "products/freefire/freefirethumb.png",
-    href: "/",
+    href: "/payment/free-fire",
   },
   {
+    id: "3",
     data: "Pubg Mobile",
     dev: "UC Indonesia",
     bg: "products/pubg/pubg.jpeg",
     thumb: "products/pubg/pubgthumb.png",
-    href: "/",
+    href: "/payment/pubg-mobile",
   },
   {
+    id: "4",
     data: "Genshin Impact",
     dev: "Hoyoverse",
     bg: "products/genshinimpact/genshinimpact.jpg",
     thumb: "products/genshinimpact/genshinimpactthumb.png",
-    href: "/",
+    href: "/payment/genshin-impact",
   },
   {
+    id: "5",
     data: "Call of Duty Mobile",
     dev: "Garena",
     bg: "products/callofdutymobile/callofdutymobile.jpg",
     thumb: "products/callofdutymobile/callofdutymobilethumb.png",
-    href: "/",
+    href: "/payment/cod-mobile",
   },
   {
+    id: "6",
     data: "Valorant",
     dev: "Riot Games",
     bg: "products/valorant/valorant.jpg",
     thumb: "products/valorant/valorantthumb.png",
-    href: "/",
+    href: "/payment/valorant",
   },
 ];
 const dataVoucher = [
   {
+    id: "7",
     data: "Point Blank",
     dev: "Zepetto",
     bg: "voucher/pointblank/pointblank.jpeg",
     thumb: "voucher/pointblank/pointblankthumb.png",
-    href: "/",
+    href: "/payment/point-blank",
   },
   {
+    id: "8",
     data: "Steam Wallet",
     dev: "Steam Indonesia",
     bg: "voucher/steam/steam.jpg",
     thumb: "voucher/steam/steamthumb.png",
-    href: "/",
+    href: "/payment/steam-wallet",
   },
   {
+    id: "9",
     data: "PlayStation Network",
     dev: "PlayStation",
     bg: "voucher/playstation/playstation.jpg",
     thumb: "voucher/playstation/playstationthumb.png",
-    href: "/",
+    href: "/payment/playstation-network",
   },
   {
+    id: "10",
     data: "Google Play",
     dev: "Playstore",
     bg: "voucher/googleplay/googleplay.jpg",
     thumb: "voucher/googleplay/googleplaythumb.png",
-    href: "/",
+    href: "/payment/google-play",
   },
 ];
 
-type ProductData = {
+type Data = {
+  id: string;
   data: string;
   dev: string;
   bg: string;
   thumb: string;
   href: string;
 };
-type VoucherData = {
-  data: string;
-  dev: string;
-  bg: string;
-  thumb: string;
-  href: string;
-};
-type ProductOrVoucherData = ProductData | VoucherData;
+type ProductOrVoucherData = Data;
 
 const Main = () => {
   const [games, setGames] = useState<boolean>(true);
@@ -184,21 +188,21 @@ const Main = () => {
     );
   }
 
-  axios
-    .get(
-      `https://v1.apigames.id/merchant/${process.env.NEXT_PUBLIC_APIGAMES_MERCHANT_ID}?signature=${process.env.NEXT_PUBLIC_APIGAMES_SIGNATURE}`
-    )
-    .then((res) => console.log(res))
-    .catch((error) => console.log(error))
-    .finally(() => console.log("selesai"));
+  // axios
+  //   .get(
+  //     `https://v1.apigames.id/merchant/${process.env.NEXT_PUBLIC_APIGAMES_MERCHANT_ID}?signature=${process.env.NEXT_PUBLIC_APIGAMES_SIGNATURE}`
+  //   )
+  //   .then((res) => console.log(res))
+  //   .catch((error) => console.log(error))
+  //   .finally(() => console.log("selesai"));
 
-  axios
-    .get(
-      `https://v1.apigames.id/merchant/${process.env.NEXT_PUBLIC_APIGAMES_MERCHANT_ID}/cek-username/mobilelegend?user_id=88148365612493&signature=${process.env.NEXT_PUBLIC_APIGAMES_SIGNATURE}`
-    )
-    .then((res) => console.log(res))
-    .catch((error) => console.log(error))
-    .finally(() => console.log("selesai"));
+  // axios
+  //   .get(
+  //     `https://v1.apigames.id/merchant/${process.env.NEXT_PUBLIC_APIGAMES_MERCHANT_ID}/cek-username/mobilelegend?user_id=88148365612493&signature=${process.env.NEXT_PUBLIC_APIGAMES_SIGNATURE}`
+  //   )
+  //   .then((res) => console.log(res))
+  //   .catch((error) => console.log(error))
+  //   .finally(() => console.log("selesai"));
 
   return (
     <Navbar>
