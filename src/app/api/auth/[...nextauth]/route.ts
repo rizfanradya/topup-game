@@ -21,7 +21,7 @@ const authOptions: NextAuthOptions = {
           password: string;
         };
         const prisma = new PrismaClient();
-        const user = await prisma.admins.findMany();
+        const user = await prisma.admin.findMany();
         if (!user[0].username) throw new Error("email mismatch");
         const passwordMatch = await bcrypt.compare(password, user[0].password);
         if (!passwordMatch) throw new Error("password mismatch");
