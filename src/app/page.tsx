@@ -8,7 +8,7 @@ import { Controller, useForm } from "react-hook-form";
 import CardProducts from "./components/cardProducts";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import NavbarHeader from "./navbarHeader";
+import NavbarHeader from "./navbar/navbarHeader";
 
 const settings = {
   dots: false,
@@ -185,7 +185,7 @@ export default function Main() {
     );
   });
 
-  const hotGames = dataProducts.slice(0, 4);
+  const hotGames = topupGames.slice(0, 4);
   const hotVoucher = dataVoucher.slice(0, 4);
   const popular = [...hotGames, ...hotVoucher];
 

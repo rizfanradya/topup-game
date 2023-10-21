@@ -1,7 +1,7 @@
 import axios from "axios";
 import FormPayment from "../form";
 import Image from "next/image";
-import NavbarHeader from "@/app/navbarHeader";
+import NavbarHeader from "@/app/navbar/navbarHeader";
 
 export default async function Payment(props: any) {
   const { params } = props;

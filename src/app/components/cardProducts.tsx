@@ -3,7 +3,6 @@ import Link from "next/link";
 
 type ProductData = {
   id: string;
-  link: string;
   background: string;
   thumbnail: string;
   title: string;
@@ -11,9 +10,7 @@ type ProductData = {
 };
 type DataProps = { data: ProductData[] };
 
-export default function CardProducts(props: DataProps) {
-  const { data } = props;
-
+export default function CardProducts({ data }: DataProps) {
   return (
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 gap-2 md:gap-4">
       {data.map((doc) => (

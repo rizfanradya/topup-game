@@ -1,4 +1,4 @@
-import NavbarHeader from "@/app/navbarHeader";
+import NavbarHeader from "@/app/navbar/navbarHeader";
 
 export default function TermsOfServices() {
   const data = [

@@ -1,21 +1,13 @@
-"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { ReactNode, useState } from "react";
-import {
-  AiFillHome,
-  AiOutlineSearch,
-  AiOutlineInstagram,
-  AiFillYoutube,
-  AiOutlineMenu,
-  AiOutlineClose,
-} from "react-icons/ai";
+import { ReactNode } from "react";
+import { AiOutlineInstagram, AiFillYoutube } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import HamburgerMenu from "./hamburgerMenu";
 
 const settings = {
   dots: false,
@@ -54,12 +46,6 @@ const metodePembayaran = [
 type DataProps = { children: ReactNode };
 export default function NavbarHeader(props: DataProps) {
   const { children } = props;
-  const pathname = usePathname();
-  const [menu, setMenu] = useState<boolean>();
-
-  const menuHandle = () => {
-    setMenu(!menu);
-  };
 
   return (
     <>
@@ -76,66 +62,15 @@ export default function NavbarHeader(props: DataProps) {
           <h1>Warung Top Up Store</h1>
         </Link>
 
-        <ul
-          className={`gap-6 items-center absolute px-4 py-8 top-0 bottom-0 bg-base-200 w-1/2 h-screen flex-col md:p-0 md:bg-transparent md:w-max md:h-max md:flex-row md:static md:flex ${
-            menu ? "left-0" : "-left-1/2 hidden"
-          }`}
-        >
-          <Link
-            href={"/"}
-            className="md:hidden mb-4 flex flex-col text-center items-center font-semibold gap-2"
-          >
-            <Image
-              className="rounded-full"
-              src={"/logo.jpg"}
-              width={50}
-              height={50}
-              alt="logo"
-            />
-            <h1>Warung Top Up Store</h1>
-          </Link>
-          <li className="w-full md:w-max">
-            <Link
-              className={`${
-                pathname === "/" ? "active text-accent" : ""
-              } hover:text-accent transition gap-2 flex`}
-              title="HOME"
-              href={"/"}
-            >
-              <span className="md:hidden">
-                <AiFillHome size="1.5em" />
-              </span>
-              <p>Beranda</p>
-            </Link>
-          </li>
-
-          <li className="w-full md:w-max">
-            <Link
-              className={`${
-                pathname === "/searchInvoice" ? "active text-accent" : ""
-              } hover:text-accent transition gap-2 flex`}
-              title="LACAK PESANAN"
-              href={"/searchInvoice"}
-            >
-              <span className="md:hidden">
-                <AiOutlineSearch size="1.7em" />
-              </span>
-              <p>Lacak Pesanan</p>
-            </Link>
-          </li>
-        </ul>
-
-        <div className="md:hidden" onClick={menuHandle}>
-          {menu ? <AiOutlineClose size="2em" /> : <AiOutlineMenu size="2em" />}
-        </div>
+        <HamburgerMenu />
       </div>
       {/* navbar top end */}
 
       <div className="pt-20 mx-4">{children}</div>
 
       {/* footer start */}
-      <footer className="footer py-14 grid justify-center p-4 md:px-20 bg-base-200 text-base-content">
-        <div className="max-w-xl flex flex-col gap-6">
+      <footer className="footer py-14 grid justify-center p-4 bg-base-200 text-base-content">
+        <div className="flex flex-col gap-6 mr-6">
           <Link
             href={"/"}
             className="text-lg flex items-center font-semibold gap-2"
@@ -259,7 +194,7 @@ export default function NavbarHeader(props: DataProps) {
         </div>
       </footer>
 
-      <footer className="footer footer-center gap-6 py-6 px-2 bg-base-300 text-base-content mb-14 md:mb-0 md:flex justify-around">
+      <footer className="footer footer-center gap-6 py-6 px-2 bg-base-300 text-base-content md:flex justify-around">
         <p className="text-sm">© 2023 Warung Top Up Store. Semua Hak Cipta</p>
         <div className="text-warning flex">
           <Link
