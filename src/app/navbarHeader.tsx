@@ -10,6 +10,7 @@ import { GrMail } from "react-icons/gr";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Navbar } from "flowbite-react";
 
 const settings = {
   dots: false,
@@ -46,14 +47,14 @@ const metodePembayaran = [
 ];
 
 type DataProps = { children: ReactNode };
-const Navbar = (props: DataProps) => {
+export default function NavbarHeader(props: DataProps) {
   const { children } = props;
   const pathname = usePathname();
 
   return (
     <>
       {/* navbar top start */}
-      <div className="bg-base-300 navbar px-6 flex justify-between items-center fixed z-10">
+      {/* <div className="bg-base-300 navbar px-6 flex justify-between items-center fixed z-10">
         <Link href={"/"} className="flex items-center font-semibold gap-2">
           <Image
             className="rounded-full"
@@ -86,7 +87,29 @@ const Navbar = (props: DataProps) => {
             <AiOutlineSearch size="1.7em" />
           </Link>
         </div>
-      </div>
+      </div> */}
+      <Navbar fluid rounded>
+        <Navbar.Brand as={Link} href="/">
+          <Image
+            src="/logo.jpg"
+            className="rounded-full"
+            alt="Logo"
+            width={35}
+            height={35}
+          />
+          <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
+            Warung Top Up Store
+          </span>
+        </Navbar.Brand>
+        <Navbar.Toggle />
+        <Navbar>
+          <Navbar.Link href="#">Home</Navbar.Link>
+          <Navbar.Link href="#">About</Navbar.Link>
+          <Navbar.Link href="#">Services</Navbar.Link>
+          <Navbar.Link href="#">Pricing</Navbar.Link>
+          <Navbar.Link href="#">Contact</Navbar.Link>
+        </Navbar>
+      </Navbar>
       {/* navbar top end */}
 
       <div className="pt-20 mx-4">{children}</div>
@@ -236,32 +259,6 @@ const Navbar = (props: DataProps) => {
         </div>
       </footer>
       {/* footer end */}
-
-      {/* navbar bottom start */}
-      <div className="btm-nav md:hidden border-t-2 border-slate-500">
-        <Link
-          href={"/"}
-          className={`${
-            pathname === "/" ? "active text-accent" : ""
-          } hover:text-accent transition`}
-          title="HOME"
-        >
-          <AiFillHome size="1.3em" />
-        </Link>
-
-        <Link
-          href={"/searchInvoice"}
-          className={`${
-            pathname === "/searchInvoice" ? "active text-accent" : ""
-          } hover:text-accent transition`}
-          title="LACAK PESANAN"
-        >
-          <AiOutlineSearch size="1.6em" />
-        </Link>
-      </div>
-      {/* navbar bottom end */}
     </>
   );
-};
-
-export default Navbar;
+}

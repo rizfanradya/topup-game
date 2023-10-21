@@ -1,13 +1,13 @@
 "use client";
 import Image from "next/image";
-import Navbar from "./navbar";
+import Navbar from "./navbarHeader";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import CardProductsHot from "./components/cardProductsHot";
 import { Controller, useForm } from "react-hook-form";
 import CardProducts from "./components/cardProducts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const settings = {
@@ -29,7 +29,7 @@ const dataCarousel = [
 const dataProducts = [
   {
     id: "1",
-    data: "Mobile Legends",
+    title: "Mobile Legends",
     dev: "Moontoon",
     bg: "products/mobileLegends/mobileLegends.jpg",
     thumb: "products/mobileLegends/mobileLegendsThumb.png",
@@ -37,7 +37,7 @@ const dataProducts = [
   },
   {
     id: "2",
-    data: "Free Fire",
+    title: "Free Fire",
     dev: "Garena",
     bg: "products/freefire/freefire.jpg",
     thumb: "products/freefire/freefirethumb.png",
@@ -45,7 +45,7 @@ const dataProducts = [
   },
   {
     id: "3",
-    data: "Pubg Mobile",
+    title: "Pubg Mobile",
     dev: "UC Indonesia",
     bg: "products/pubg/pubg.jpeg",
     thumb: "products/pubg/pubgthumb.png",
@@ -53,7 +53,7 @@ const dataProducts = [
   },
   {
     id: "4",
-    data: "Genshin Impact",
+    title: "Genshin Impact",
     dev: "Hoyoverse",
     bg: "products/genshinimpact/genshinimpact.jpg",
     thumb: "products/genshinimpact/genshinimpactthumb.png",
@@ -61,7 +61,7 @@ const dataProducts = [
   },
   {
     id: "5",
-    data: "Call of Duty Mobile",
+    title: "Call of Duty Mobile",
     dev: "Garena",
     bg: "products/callofdutymobile/callofdutymobile.jpg",
     thumb: "products/callofdutymobile/callofdutymobilethumb.png",
@@ -69,7 +69,7 @@ const dataProducts = [
   },
   {
     id: "6",
-    data: "Valorant",
+    title: "Valorant",
     dev: "Riot Games",
     bg: "products/valorant/valorant.jpg",
     thumb: "products/valorant/valorantthumb.png",
@@ -79,7 +79,7 @@ const dataProducts = [
 const dataVoucher = [
   {
     id: "7",
-    data: "Point Blank",
+    title: "Point Blank",
     dev: "Zepetto",
     bg: "voucher/pointblank/pointblank.jpeg",
     thumb: "voucher/pointblank/pointblankthumb.png",
@@ -87,7 +87,7 @@ const dataVoucher = [
   },
   {
     id: "8",
-    data: "Steam Wallet",
+    title: "Steam Wallet",
     dev: "Steam Indonesia",
     bg: "voucher/steam/steam.jpg",
     thumb: "voucher/steam/steamthumb.png",
@@ -95,7 +95,7 @@ const dataVoucher = [
   },
   {
     id: "9",
-    data: "PlayStation Network",
+    title: "PlayStation Network",
     dev: "PlayStation",
     bg: "voucher/playstation/playstation.jpg",
     thumb: "voucher/playstation/playstationthumb.png",
@@ -103,7 +103,7 @@ const dataVoucher = [
   },
   {
     id: "10",
-    data: "Google Play",
+    title: "Google Play",
     dev: "Playstore",
     bg: "voucher/googleplay/googleplay.jpg",
     thumb: "voucher/googleplay/googleplaythumb.png",
@@ -113,15 +113,14 @@ const dataVoucher = [
 
 type Data = {
   id: string;
-  data: string;
+  title: string;
   dev: string;
   bg: string;
   thumb: string;
   href: string;
 };
-type ProductOrVoucherData = Data;
 
-const Main = () => {
+export default function Main() {
   const [games, setGames] = useState<boolean>(true);
   const [voucher, setVoucher] = useState<boolean>(false);
   const [pulsa, setPulsa] = useState<boolean>(false);
@@ -153,9 +152,22 @@ const Main = () => {
     placeholder = "";
   }
 
-  let data: ProductOrVoucherData[];
+  const [topupGames, setTopupGames] = useState<any>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { data } = await axios.get("api/retrieveDataProducts");
+        setTopupGames(data.data);
+      } catch (error) {
+        setTopupGames(error);
+      }
+    };
+    fetchData();
+  }, [topupGames]);
+
+  let data: any;
   if (games) {
-    data = dataProducts;
+    data = topupGames;
   } else if (voucher) {
     data = dataVoucher;
   } else {
@@ -164,11 +176,11 @@ const Main = () => {
 
   const { control, watch } = useForm();
   const searchValue = watch("search", "");
-  const filteredData = data.filter((item) => {
-    const { data, dev } = item;
+  const filteredData = data.filter((item: { title: any; dev: any }) => {
+    const { title, dev } = item;
     const searchKeyword = searchValue.toLowerCase();
     return (
-      data.toLowerCase().includes(searchKeyword) ||
+      title.toLowerCase().includes(searchKeyword) ||
       dev.toLowerCase().includes(searchKeyword)
     );
   });
@@ -187,22 +199,6 @@ const Main = () => {
       </div>
     );
   }
-
-  // axios
-  //   .get(
-  //     `https://v1.apigames.id/merchant/${process.env.NEXT_PUBLIC_APIGAMES_MERCHANT_ID}?signature=${process.env.NEXT_PUBLIC_APIGAMES_SIGNATURE}`
-  //   )
-  //   .then((res) => console.log(res))
-  //   .catch((error) => console.log(error))
-  //   .finally(() => console.log("selesai"));
-
-  // axios
-  //   .get(
-  //     `https://v1.apigames.id/merchant/${process.env.NEXT_PUBLIC_APIGAMES_MERCHANT_ID}/cek-username/mobilelegend?user_id=88148365612493&signature=${process.env.NEXT_PUBLIC_APIGAMES_SIGNATURE}`
-  //   )
-  //   .then((res) => console.log(res))
-  //   .catch((error) => console.log(error))
-  //   .finally(() => console.log("selesai"));
 
   return (
     <Navbar>
@@ -281,6 +277,4 @@ const Main = () => {
       <div className="my-4">{showData}</div>
     </Navbar>
   );
-};
-
-export default Main;
+}

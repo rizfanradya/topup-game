@@ -1,4 +1,4 @@
-import Navbar from "@/app/navbar";
+import Navbar from "@/app/navbarHeader";
 
 const TermsOfServices = async () => {
   const data = [

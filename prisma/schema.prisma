@@ -11,9 +11,38 @@ datasource db {
 }
 
 model admin {
-  id       String @id @default(auto()) @map("_id") @db.ObjectId
-  username String
-  password String
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  username  String
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model products {
+  id              String      @id @default(auto()) @map("_id") @db.ObjectId
+  title           String
+  dev             String
+  background      String
+  thumbnail       String
+  type            String
+  serverIdInput   Boolean
+  typeValue       String
+  checkUsernameId String
+  priceItem       priceItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model priceItem {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  nameItem    String
+  priceItemId String
+  price       Int
+
+  item   products @relation(fields: [itemId], references: [id])
+  itemId String   @db.ObjectId
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

@@ -1,4 +1,4 @@
-import Navbar from "@/app/navbar";
+import Navbar from "@/app/navbarHeader";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const AboutUs = async () => {
