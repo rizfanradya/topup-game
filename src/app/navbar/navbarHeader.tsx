@@ -4,21 +4,9 @@ import { ReactNode } from "react";
 import { AiOutlineInstagram, AiFillYoutube } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import HamburgerMenu from "./hamburgerMenu";
+import SliderImageFooter from "./sliderImage";
 
-const settings = {
-  dots: false,
-  infinite: true,
-  speed: 1000,
-  slidesToShow: 5,
-  slidesToScroll: 2,
-  autoplay: true,
-  autoplaySpeed: 2000,
-  arrows: false,
-};
 const petaSitus = [
   { href: "/", value: "Beranda" },
   { href: "/searchInvoice", value: "Daftar Pesanan" },
@@ -176,19 +164,7 @@ export default function NavbarHeader(props: DataProps) {
           <div className="mt-6 grid gap-4">
             <h3 className="footer-title text-sm">METODE PEMBAYARAN</h3>
             <div className="max-w-md overflow-hidden">
-              <Slider {...settings}>
-                {metodePembayaran.map((doc) => (
-                  <div className="h-10" key={doc.src}>
-                    <Image
-                      className="px-2 h-full"
-                      src={`/metodePembayaran/${doc.src}.svg`}
-                      width={100}
-                      height={100}
-                      alt={doc.src}
-                    />
-                  </div>
-                ))}
-              </Slider>
+              <SliderImageFooter metodePembayaran={metodePembayaran} />
             </div>
           </div>
         </div>
