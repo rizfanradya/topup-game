@@ -3,7 +3,7 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import Loading from "../loading";
 
-const AdminPage = () => {
+export default function AdminPage() {
   const { data: session, status } = useSession();
 
   if (status === "loading") {
@@ -28,6 +28,4 @@ const AdminPage = () => {
       </button>
     </div>
   );
-};
-
-export default AdminPage;
+}

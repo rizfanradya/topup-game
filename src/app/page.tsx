@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Navbar from "./navbarHeader";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -9,6 +8,7 @@ import { Controller, useForm } from "react-hook-form";
 import CardProducts from "./components/cardProducts";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import NavbarHeader from "./navbarHeader";
 
 const settings = {
   dots: false,
@@ -201,7 +201,7 @@ export default function Main() {
   }
 
   return (
-    <Navbar>
+    <NavbarHeader>
       <Slider {...settings}>
         {dataCarousel.map((doc, index) => (
           <Image
@@ -275,6 +275,6 @@ export default function Main() {
       </div>
 
       <div className="my-4">{showData}</div>
-    </Navbar>
+    </NavbarHeader>
   );
 }

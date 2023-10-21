@@ -11,7 +11,7 @@ type ProductData = {
 };
 type DataProps = { data: ProductData[] };
 
-const CardProducts = (props: DataProps) => {
+export default function CardProducts(props: DataProps) {
   const { data } = props;
 
   return (
@@ -47,6 +47,4 @@ const CardProducts = (props: DataProps) => {
       ))}
     </div>
   );
-};
-
-export default CardProducts;
+}

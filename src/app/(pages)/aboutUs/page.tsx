@@ -1,9 +1,9 @@
-import Navbar from "@/app/navbarHeader";
+import NavbarHeader from "@/app/navbarHeader";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-const AboutUs = async () => {
+export default function AboutUs() {
   return (
-    <Navbar>
+    <NavbarHeader>
       <div className="tracking-wider">
         <div
           style={{
@@ -53,8 +53,6 @@ const AboutUs = async () => {
           </div>
         </div>
       </div>
-    </Navbar>
+    </NavbarHeader>
   );
-};
-
-export default AboutUs;
+}

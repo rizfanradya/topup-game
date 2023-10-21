@@ -2,15 +2,20 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ReactNode } from "react";
-import { AiFillHome, AiOutlineSearch } from "react-icons/ai";
-import { AiOutlineInstagram, AiFillYoutube } from "react-icons/ai";
+import { ReactNode, useState } from "react";
+import {
+  AiFillHome,
+  AiOutlineSearch,
+  AiOutlineInstagram,
+  AiFillYoutube,
+  AiOutlineMenu,
+  AiOutlineClose,
+} from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Navbar } from "flowbite-react";
 
 const settings = {
   dots: false,
@@ -50,11 +55,16 @@ type DataProps = { children: ReactNode };
 export default function NavbarHeader(props: DataProps) {
   const { children } = props;
   const pathname = usePathname();
+  const [menu, setMenu] = useState<boolean>();
+
+  const menuHandle = () => {
+    setMenu(!menu);
+  };
 
   return (
     <>
       {/* navbar top start */}
-      {/* <div className="bg-base-300 navbar px-6 flex justify-between items-center fixed z-10">
+      <div className="bg-base-300 navbar px-6 flex justify-between items-center fixed z-10">
         <Link href={"/"} className="flex items-center font-semibold gap-2">
           <Image
             className="rounded-full"
@@ -66,50 +76,59 @@ export default function NavbarHeader(props: DataProps) {
           <h1>Warung Top Up Store</h1>
         </Link>
 
-        <div className="gap-6 items-center hidden md:flex">
+        <ul
+          className={`gap-6 items-center absolute px-4 py-8 top-0 bottom-0 bg-base-200 w-1/2 h-screen flex-col md:p-0 md:bg-transparent md:w-max md:h-max md:flex-row md:static md:flex ${
+            menu ? "left-0" : "-left-1/2 hidden"
+          }`}
+        >
           <Link
-            className={`${
-              pathname === "/" ? "active text-accent" : ""
-            } hover:text-accent transition`}
-            title="HOME"
             href={"/"}
+            className="md:hidden mb-4 flex flex-col text-center items-center font-semibold gap-2"
           >
-            <AiFillHome size="1.5em" />
+            <Image
+              className="rounded-full"
+              src={"/logo.jpg"}
+              width={50}
+              height={50}
+              alt="logo"
+            />
+            <h1>Warung Top Up Store</h1>
           </Link>
+          <li className="w-full md:w-max">
+            <Link
+              className={`${
+                pathname === "/" ? "active text-accent" : ""
+              } hover:text-accent transition gap-2 flex`}
+              title="HOME"
+              href={"/"}
+            >
+              <span className="md:hidden">
+                <AiFillHome size="1.5em" />
+              </span>
+              <p>Beranda</p>
+            </Link>
+          </li>
 
-          <Link
-            className={`${
-              pathname === "/searchInvoice" ? "active text-accent" : ""
-            } hover:text-accent transition`}
-            title="LACAK PESANAN"
-            href={"/searchInvoice"}
-          >
-            <AiOutlineSearch size="1.7em" />
-          </Link>
+          <li className="w-full md:w-max">
+            <Link
+              className={`${
+                pathname === "/searchInvoice" ? "active text-accent" : ""
+              } hover:text-accent transition gap-2 flex`}
+              title="LACAK PESANAN"
+              href={"/searchInvoice"}
+            >
+              <span className="md:hidden">
+                <AiOutlineSearch size="1.7em" />
+              </span>
+              <p>Lacak Pesanan</p>
+            </Link>
+          </li>
+        </ul>
+
+        <div className="md:hidden" onClick={menuHandle}>
+          {menu ? <AiOutlineClose size="2em" /> : <AiOutlineMenu size="2em" />}
         </div>
-      </div> */}
-      <Navbar fluid rounded>
-        <Navbar.Brand as={Link} href="/">
-          <Image
-            src="/logo.jpg"
-            className="rounded-full"
-            alt="Logo"
-            width={35}
-            height={35}
-          />
-          <span className="self-center whitespace-nowrap text-xl font-semibold text-white">
-            Warung Top Up Store
-          </span>
-        </Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar>
-          <Navbar.Link href="#">Home</Navbar.Link>
-          <Navbar.Link href="#">About</Navbar.Link>
-          <Navbar.Link href="#">Services</Navbar.Link>
-          <Navbar.Link href="#">Pricing</Navbar.Link>
-          <Navbar.Link href="#">Contact</Navbar.Link>
-        </Navbar>
-      </Navbar>
+      </div>
       {/* navbar top end */}
 
       <div className="pt-20 mx-4">{children}</div>

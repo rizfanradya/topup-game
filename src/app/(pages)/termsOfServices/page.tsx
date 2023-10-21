@@ -1,6 +1,6 @@
-import Navbar from "@/app/navbarHeader";
+import NavbarHeader from "@/app/navbarHeader";
 
-const TermsOfServices = async () => {
+export default function TermsOfServices() {
   const data = [
     {
       title: "Ketentuan Umum",
@@ -96,7 +96,7 @@ const TermsOfServices = async () => {
   ];
 
   return (
-    <Navbar>
+    <NavbarHeader>
       <div className="tracking-wider">
         <div
           style={{
@@ -129,8 +129,6 @@ const TermsOfServices = async () => {
           </div>
         </div>
       </div>
-    </Navbar>
+    </NavbarHeader>
   );
-};
-
-export default TermsOfServices;
+}

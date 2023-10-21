@@ -1,5 +1,5 @@
 "use client";
-import Navbar from "@/app/navbarHeader";
+import NavbarHeader from "@/app/navbarHeader";
 import { Controller, useForm } from "react-hook-form";
 import { MdPayment } from "react-icons/md";
 
@@ -69,7 +69,7 @@ const data = [
   },
 ];
 
-const SearchInvoice = () => {
+export default function SearchInvoice() {
   const statusBadge = (status: string) => {
     switch (status) {
       case "berhasil":
@@ -98,7 +98,7 @@ const SearchInvoice = () => {
   };
 
   return (
-    <Navbar>
+    <NavbarHeader>
       <div className="form-control w-full flex flex-col gap-2 pb-4">
         <label htmlFor="lacakpesanan" className="font-medium text-sm">
           LACAK PESANAN DENGAN NOMOR TELEPON
@@ -166,8 +166,6 @@ const SearchInvoice = () => {
             </div>
           ))}
       </div>
-    </Navbar>
+    </NavbarHeader>
   );
-};
-
-export default SearchInvoice;
+}

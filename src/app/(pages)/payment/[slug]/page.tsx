@@ -1,9 +1,9 @@
-import Navbar from "@/app/navbarHeader";
 import axios from "axios";
 import FormPayment from "../form";
 import Image from "next/image";
+import NavbarHeader from "@/app/navbarHeader";
 
-const Payment = async (props: any) => {
+export default async function Payment(props: any) {
   const { params } = props;
   const dataProducts = async () => {
     try {
@@ -21,7 +21,7 @@ const Payment = async (props: any) => {
   const { data } = await dataProducts();
 
   return (
-    <Navbar>
+    <NavbarHeader>
       <div
         style={{
           backgroundImage: `url(/${data.background})`,
@@ -43,8 +43,6 @@ const Payment = async (props: any) => {
         serverIdInput={data.serverIdInput}
         priceItem={data.priceItem}
       />
-    </Navbar>
+    </NavbarHeader>
   );
-};
-
-export default Payment;
+}

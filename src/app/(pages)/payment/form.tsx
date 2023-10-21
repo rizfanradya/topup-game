@@ -1,6 +1,5 @@
 "use client";
 import { useForm } from "react-hook-form";
-import styles from "./styles.module.css";
 
 type priceItem = {
   id: string;
@@ -8,9 +7,9 @@ type priceItem = {
   priceItemId: string;
   price: number;
 };
-type dataProps = { serverIdInput: boolean; priceItem: priceItem[] };
+type DataProps = { serverIdInput: boolean; priceItem: priceItem[] };
 
-const FormPayment = (props: dataProps) => {
+export default function FormPayment(props: DataProps) {
   const { serverIdInput, priceItem } = props;
   const {
     register,
@@ -61,13 +60,13 @@ const FormPayment = (props: dataProps) => {
           {priceItem.map((doc) => (
             <div key={doc.id}>
               <input
-                className={`${styles.inputOption} hidden`}
+                className="inputOption hidden"
                 id={doc.id}
                 type="radio"
                 name="radio"
               />
               <label
-                className={`flex flex-col p-4 border-gray-100 cursor-pointer bg-base-100 rounded-xl ${styles.labelOption}`}
+                className={`flex flex-col p-4 border-gray-100 cursor-pointer bg-base-100 rounded-xl labelOption`}
                 htmlFor={doc.id}
               >
                 <div>
@@ -83,6 +82,4 @@ const FormPayment = (props: dataProps) => {
       <button className="btn btn-accent">PESAN SEKARANG</button>
     </form>
   );
-};
-
-export default FormPayment;
+}
