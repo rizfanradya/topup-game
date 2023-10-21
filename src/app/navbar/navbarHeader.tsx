@@ -31,10 +31,7 @@ const metodePembayaran = [
   { src: "bri" },
 ];
 
-type DataProps = { children: ReactNode };
-export default function NavbarHeader(props: DataProps) {
-  const { children } = props;
-
+export default function NavbarHeader({ children }: { children: ReactNode }) {
   return (
     <>
       {/* navbar top start */}

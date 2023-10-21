@@ -3,8 +3,7 @@ import FormPayment from "../form";
 import Image from "next/image";
 import NavbarHeader from "@/app/navbar/navbarHeader";
 
-export default async function Payment(props: any) {
-  const { params } = props;
+export default async function Payment({ params }: any) {
   const dataProducts = async () => {
     try {
       const data = await axios.post(
@@ -38,6 +37,7 @@ export default async function Payment(props: any) {
           />
         </div>
       </div>
+
       <h1 className="my-4 font-medium text-lg uppercase">{data.title}</h1>
       <FormPayment
         serverIdInput={data.serverIdInput}

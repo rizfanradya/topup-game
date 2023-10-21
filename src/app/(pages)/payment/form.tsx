@@ -9,8 +9,7 @@ type priceItem = {
 };
 type DataProps = { serverIdInput: boolean; priceItem: priceItem[] };
 
-export default function FormPayment(props: DataProps) {
-  const { serverIdInput, priceItem } = props;
+export default function FormPayment({ serverIdInput, priceItem }: DataProps) {
   const {
     register,
     handleSubmit,
