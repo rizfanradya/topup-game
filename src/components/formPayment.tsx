@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import validator from "validator";
 import { useState } from "react";
 import axios from "axios";
+import createOrder from "@/utils/createOrder";
 
 type priceItem = {
   id: string;
@@ -30,10 +31,11 @@ export default function FormPayment({
   } = useForm();
   const [validatorResult, setValidatorResult] = useState<Boolean>(false);
 
-  const createOrder = async (e: any) => {
+  const processOrder = async (e: any) => {
     try {
       if (validator.isMobilePhone(e.whatsapp, ["id-ID"])) {
-        console.log(e);
+        const process = await createOrder(e.produk, e.userId, e.serverId);
+        console.log(process);
       } else {
         setValidatorResult(true);
         setTimeout(() => {
@@ -47,7 +49,7 @@ export default function FormPayment({
 
   return (
     <form
-      onSubmit={handleSubmit(createOrder)}
+      onSubmit={handleSubmit(processOrder)}
       className="bg-base-300 rounded-lg p-4 grid gap-4 mb-8"
     >
       <div className="grid gap-1">
@@ -92,9 +94,9 @@ export default function FormPayment({
                 id={doc.id}
                 type="radio"
                 value={doc.priceItemId.toUpperCase()}
-                {...register("priceItem", { required: true })}
+                {...register("produk", { required: true })}
                 onChange={(e) =>
-                  setValue("priceItem", e.target.value.toUpperCase())
+                  setValue("produk", e.target.value.toUpperCase())
                 }
               />
 
