@@ -34,16 +34,6 @@ export default function FormPayment({
   const createOrder = async (e: any) => {
     try {
       if (validator.isMobilePhone(e.whatsapp, ["id-ID"])) {
-        const createPayment = await axios.post("/api/createOrder", {
-          produk: codeGame.toUpperCase(),
-          tujuan: e.userId,
-          server_id: e.serverId,
-        });
-        const confirmUser = confirm(
-          `Apakah anda yakin ingin melanjutkan pengisian ${typeValue} dengan username: '${createPayment}'`
-        );
-
-        console.log(createPayment);
         console.log(e);
       } else {
         setValidatorResult(true);
