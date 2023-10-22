@@ -7,7 +7,7 @@ export default async function Payment({ params }: any) {
   const dataProducts = async () => {
     try {
       const data = await axios.post(
-        "http://localhost:3000/api/paymentDetails",
+        "https://topup-game-beta.vercel.app/api/paymentDetails",
         {
           id: params.slug,
         }
@@ -42,6 +42,8 @@ export default async function Payment({ params }: any) {
       <FormPayment
         serverIdInput={data.serverIdInput}
         priceItem={data.priceItem}
+        typeValue={data.typeValue}
+        codeGame={data.checkUsernameId}
       />
     </NavbarHeader>
   );

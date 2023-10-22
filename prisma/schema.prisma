@@ -19,16 +19,15 @@ model admin {
 }
 
 model products {
-  id              String      @id @default(auto()) @map("_id") @db.ObjectId
-  title           String
-  dev             String
-  background      String
-  thumbnail       String
-  type            String
-  serverIdInput   Boolean
-  typeValue       String
-  checkUsernameId String
-  priceItem       priceItem[]
+  id            String      @id @default(auto()) @map("_id") @db.ObjectId
+  title         String
+  dev           String
+  background    String
+  thumbnail     String
+  type          String
+  serverIdInput Boolean
+  typeValue     String
+  priceItem     priceItem[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
