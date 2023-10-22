@@ -1,11 +1,11 @@
+import FooterCarousel from "@/components/footerCarousel";
+import HamburgerMenu from "@/components/hamburgerMenu";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { AiOutlineInstagram, AiFillYoutube } from "react-icons/ai";
 import { FaTiktok } from "react-icons/fa";
 import { GrMail } from "react-icons/gr";
-import HamburgerMenu from "./hamburgerMenu";
-import SliderImageFooter from "./sliderImage";
 
 const petaSitus = [
   { href: "/", value: "Beranda" },
@@ -31,7 +31,7 @@ const metodePembayaran = [
   { src: "bri" },
 ];
 
-export default function NavbarHeader({ children }: { children: ReactNode }) {
+export default function NavbarFooter({ children }: { children: ReactNode }) {
   return (
     <>
       {/* navbar top start */}
@@ -161,7 +161,7 @@ export default function NavbarHeader({ children }: { children: ReactNode }) {
           <div className="mt-6 grid gap-4">
             <h3 className="footer-title text-sm">METODE PEMBAYARAN</h3>
             <div className="max-w-md overflow-hidden">
-              <SliderImageFooter metodePembayaran={metodePembayaran} />
+              <FooterCarousel metodePembayaran={metodePembayaran} />
             </div>
           </div>
         </div>

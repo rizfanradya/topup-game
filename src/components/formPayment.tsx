@@ -21,7 +21,6 @@ export default function FormPayment({
   serverIdInput,
   priceItem,
   typeValue,
-  codeGame,
 }: DataProps) {
   const {
     register,

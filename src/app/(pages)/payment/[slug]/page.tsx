@@ -1,7 +1,7 @@
 import axios from "axios";
-import FormPayment from "../form";
 import Image from "next/image";
-import NavbarHeader from "@/app/navbar/navbarHeader";
+import NavbarHeader from "@/app/navbarFooter";
+import FormPayment from "@/components/formPayment";
 
 export default async function Payment({ params }: any) {
   const dataProducts = async () => {

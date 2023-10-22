@@ -1,5 +1,5 @@
 "use client";
-import NavbarHeader from "@/app/navbar/navbarHeader";
+import NavbarHeader from "@/app/navbarFooter";
 import { Controller, useForm } from "react-hook-form";
 import { MdPayment } from "react-icons/md";
 

@@ -1,4 +1,4 @@
-import NavbarHeader from "@/app/navbar/navbarHeader";
+import NavbarHeader from "@/app/navbarFooter";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 export default function AboutUs() {

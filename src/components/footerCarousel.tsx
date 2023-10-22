@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 type propsMetodePembayaran = { src: string };
-export default function SliderImageFooter({
+export default function FooterCarousel({
   metodePembayaran,
 }: {
   metodePembayaran: propsMetodePembayaran[];

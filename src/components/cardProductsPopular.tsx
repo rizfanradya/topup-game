@@ -16,7 +16,7 @@ export default function CardProductsPopular({ data }: { data: any }) {
                 className="w-12 h-12 md:w-16 md:h-16 bg-no-repeat bg-cover bg-center rounded-lg"
               ></div>
               <div className="grid gap-2">
-                <h3 className="font-medium text-white text-[8px] md:text-xs">
+                <h3 className="font-medium text-white text-[8px] md:text-xs capitalize">
                   {doc.title}
                 </h3>
                 <p className="text-slate-100 text-[6px] md:text-[10px] font-light">
