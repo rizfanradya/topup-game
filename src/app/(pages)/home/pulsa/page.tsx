@@ -45,9 +45,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(
-          "http://localhost:3000/api/retrieveDataProducts"
-        );
+        const { data } = await axios.get("/api/retrieveDataProducts");
         setTopupGames(data.data);
       } catch (error) {
         console.log(error);
