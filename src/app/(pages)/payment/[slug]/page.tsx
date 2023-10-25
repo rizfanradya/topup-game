@@ -18,6 +18,7 @@ export default async function Payment({ params }: any) {
     }
   };
   const { data } = await dataProducts();
+  console.log(data);
 
   return (
     <NavbarHeader>
@@ -41,7 +42,7 @@ export default async function Payment({ params }: any) {
       <h1 className="my-4 font-medium text-lg uppercase">{data.title}</h1>
       <FormPayment
         serverIdInput={data.serverIdInput}
-        priceItem={data.priceItem}
+        dataProductItem={data.dataProductItem}
         typeValue={data.typeValue}
         codeGame={data.checkUsernameId}
       />

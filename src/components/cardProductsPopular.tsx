@@ -19,7 +19,7 @@ export default function CardProductsPopular({ data }: { data: any }) {
                 <h3 className="font-medium text-white text-[8px] md:text-xs capitalize">
                   {doc.title}
                 </h3>
-                <p className="text-slate-100 text-[6px] md:text-[10px] font-light">
+                <p className="text-slate-100 text-[6px] md:text-[10px] font-light capitalize">
                   {doc.dev}
                 </p>
               </div>

@@ -6,7 +6,7 @@ export const POST = async (req: Request) => {
   try {
     const data = await prisma.products.findUnique({
       where: { id },
-      include: { priceItem: true },
+      include: { productsPriceType: true },
     });
     return NextResponse.json({ data });
   } catch (error) {

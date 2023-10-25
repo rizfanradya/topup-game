@@ -26,7 +26,11 @@ export default function CardProducts({
       ) : (
         <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 gap-2 md:gap-4">
           {data.map((doc: any) => (
-            <Link key={doc.id} href={`/payment/${doc.id}`}>
+            <Link
+              className="grid gap-2"
+              key={doc.id}
+              href={`/payment/${doc.id}`}
+            >
               <div
                 style={{
                   backgroundImage: `url(/${doc.background})`,
@@ -48,10 +52,10 @@ export default function CardProducts({
                     height={100}
                     alt="Logo"
                   />
-                  <p className="font-semibold text-slate-50 text-sm">
+                  <p className="font-semibold text-slate-50 text-sm capitalize">
                     {doc.title}
                   </p>
-                  <p className="text-slate-100 text-xs">{doc.dev}</p>
+                  <p className="text-slate-100 text-xs capitalize">{doc.dev}</p>
                 </div>
               </div>
             </Link>

@@ -2,10 +2,8 @@
 import { Controller, useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import NavbarHeader from "@/app/navbarFooter";
-import HomeCarousel from "@/components/homeCarousel";
-import CardProductsPopular from "@/components/cardProductsPopular";
 import CardProducts from "@/components/cardProducts";
+import HomeLayout from "./(pages)/home/homeLayout";
 
 const dataProducts = [
   {
@@ -57,82 +55,8 @@ const dataProducts = [
     href: "/payment/valorant",
   },
 ];
-const dataVoucher = [
-  {
-    id: "7",
-    title: "Point Blank",
-    dev: "Zepetto",
-    bg: "voucher/pointblank/pointblank.jpeg",
-    thumb: "voucher/pointblank/pointblankthumb.png",
-    href: "/payment/point-blank",
-  },
-  {
-    id: "8",
-    title: "Steam Wallet",
-    dev: "Steam Indonesia",
-    bg: "voucher/steam/steam.jpg",
-    thumb: "voucher/steam/steamthumb.png",
-    href: "/payment/steam-wallet",
-  },
-  {
-    id: "9",
-    title: "PlayStation Network",
-    dev: "PlayStation",
-    bg: "voucher/playstation/playstation.jpg",
-    thumb: "voucher/playstation/playstationthumb.png",
-    href: "/payment/playstation-network",
-  },
-  {
-    id: "10",
-    title: "Google Play",
-    dev: "Playstore",
-    bg: "voucher/googleplay/googleplay.jpg",
-    thumb: "voucher/googleplay/googleplaythumb.png",
-    href: "/payment/google-play",
-  },
-];
-
-type Data = {
-  id: string;
-  title: string;
-  dev: string;
-  bg: string;
-  thumb: string;
-  href: string;
-};
 
 export default function Home() {
-  const [games, setGames] = useState<boolean>(true);
-  const [voucher, setVoucher] = useState<boolean>(false);
-  const [pulsa, setPulsa] = useState<boolean>(false);
-
-  const onBestSeller = () => {
-    setGames(true);
-    setVoucher(false);
-    setPulsa(false);
-  };
-  const onVoucher = () => {
-    setGames(false);
-    setVoucher(true);
-    setPulsa(false);
-  };
-  const onPulsa = () => {
-    setGames(false);
-    setVoucher(false);
-    setPulsa(true);
-  };
-
-  let placeholder: string;
-  if (games) {
-    placeholder = "Cari Top Up Game...";
-  } else if (voucher) {
-    placeholder = "Cari Voucher...";
-  } else if (pulsa) {
-    placeholder = "Cari Pulsa...";
-  } else {
-    placeholder = "";
-  }
-
   const [topupGames, setTopupGames] = useState<any>([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -146,27 +70,11 @@ export default function Home() {
     fetchData();
   }, [topupGames]);
 
-  let data: any;
-  if (games) {
-    data = topupGames;
-  } else if (voucher) {
-    data = dataVoucher;
-  } else {
-    data = [];
-  }
-
   const { control, watch } = useForm();
   const searchValue = watch("search", "");
 
-  const hotGames = topupGames.slice(0, 4);
-  const hotVoucher = dataVoucher.slice(0, 4);
-  const popular = [...hotGames, ...hotVoucher];
-
   return (
-    <NavbarHeader>
-      <HomeCarousel />
-      <CardProductsPopular data={popular} />
-
+    <HomeLayout>
       <div className="flex gap-4 w-full mb-4">
         <Controller
           name="search"
@@ -178,50 +86,13 @@ export default function Home() {
               type="text"
               autoComplete="off"
               {...field}
-              placeholder={placeholder}
+              placeholder={"Cari Topup Game..."}
             />
           )}
         />
       </div>
 
-      <div>
-        <div className="flex items-center gap-2">
-          <button
-            onClick={onBestSeller}
-            className={`border py-2 px-3 rounded-full transition text-white text-[10px] ${
-              games
-                ? "border-sky-500 bg-sky-500"
-                : "border-slate-600 hover:bg-slate-600"
-            }`}
-          >
-            Top Up Game
-          </button>
-
-          <button
-            onClick={onVoucher}
-            className={`border py-2 px-3 rounded-full transition text-white text-[10px] ${
-              voucher
-                ? "border-sky-500 bg-sky-500"
-                : "border-slate-600 hover:bg-slate-600"
-            }`}
-          >
-            Voucher
-          </button>
-
-          <button
-            onClick={onPulsa}
-            className={`border py-2 px-3 rounded-full transition text-white text-[10px] ${
-              pulsa
-                ? "border-sky-500 bg-sky-500"
-                : "border-slate-600 hover:bg-slate-600"
-            }`}
-          >
-            Pulsa
-          </button>
-        </div>
-      </div>
-
-      <CardProducts data={data} searchValue={searchValue} />
-    </NavbarHeader>
+      <CardProducts data={topupGames} searchValue={searchValue} />
+    </HomeLayout>
   );
 }

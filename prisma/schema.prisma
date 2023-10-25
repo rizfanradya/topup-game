@@ -19,15 +19,27 @@ model admin {
 }
 
 model products {
-  id            String      @id @default(auto()) @map("_id") @db.ObjectId
-  title         String
-  dev           String
-  background    String
-  thumbnail     String
-  type          String
-  serverIdInput Boolean
-  typeValue     String
-  priceItem     priceItem[]
+  id                String              @id @default(auto()) @map("_id") @db.ObjectId
+  title             String
+  dev               String
+  background        String
+  thumbnail         String
+  productType       String
+  serverIdInput     Boolean
+  productTypeValue  String
+  productsPriceType productsPriceType[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model productsPriceType {
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  nameType  String
+  priceItem priceItem[]
+
+  productsPrice   products @relation(fields: [productsPriceId], references: [id])
+  productsPriceId String   @db.ObjectId
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -39,8 +51,8 @@ model priceItem {
   priceItemId String
   price       Int
 
-  item   products @relation(fields: [itemId], references: [id])
-  itemId String   @db.ObjectId
+  item   productsPriceType @relation(fields: [itemId], references: [id])
+  itemId String            @db.ObjectId
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

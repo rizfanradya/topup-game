@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^5.4.2",
+    "@prisma/client": "^5.5.1",
     "@types/bcrypt": "^5.0.0",
     "@types/md5": "^2.3.4",
     "@types/validator": "^13.11.5",
@@ -39,7 +39,7 @@
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
     "postcss": "^8",
-    "prisma": "^5.4.2",
+    "prisma": "^5.5.1",
     "tailwindcss": "^3",
     "typescript": "^5"
   }
