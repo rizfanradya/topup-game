@@ -42,7 +42,7 @@ export default async function Payment({ params }: any) {
       <h1 className="my-4 font-medium text-lg uppercase">{data.title}</h1>
       <FormPayment
         serverIdInput={data.serverIdInput}
-        dataProductItem={data.dataProductItem}
+        dataProductItem={data.productsPriceType}
         typeValue={data.typeValue}
         codeGame={data.checkUsernameId}
       />
