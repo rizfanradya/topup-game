@@ -18,7 +18,6 @@ export default async function Payment({ params }: any) {
     }
   };
   const { data } = await dataProducts();
-  console.log(data);
 
   return (
     <NavbarHeader>

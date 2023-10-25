@@ -36,19 +36,22 @@ export default function FormPayment({
   const [validatorResult, setValidatorResult] = useState<Boolean>(false);
 
   const processOrder = async (e: any) => {
+    const confirmPayment = confirm("Apakah anda yakin ?");
     const { produk, userId, serverId, whatsapp } = e;
-    try {
-      if (validator.isMobilePhone(whatsapp, ["id-ID"])) {
-        const process = await createOrder(produk, userId, serverId);
-        console.log(process);
-      } else {
-        setValidatorResult(true);
-        setTimeout(() => {
-          setValidatorResult(false);
-        }, 2000);
+    if (confirmPayment) {
+      try {
+        if (validator.isMobilePhone(whatsapp, ["id-ID"])) {
+          const process = await createOrder(produk, userId, serverId);
+          console.log(process);
+        } else {
+          setValidatorResult(true);
+          setTimeout(() => {
+            setValidatorResult(false);
+          }, 2000);
+        }
+      } catch (error) {
+        console.log(error);
       }
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -97,6 +100,7 @@ export default function FormPayment({
             WAJIB MEMILIH JUMLAH {typeValue}
           </div>
         )}
+
         {dataProductItem.map((doc) => (
           <div key={doc.id}>
             <p className="uppercase font-medium text-sm mb-1">{doc.nameType}</p>
