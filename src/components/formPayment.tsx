@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import validator from "validator";
 import { useState } from "react";
 import createOrder from "@/utils/createOrder";
+import axios from "axios";
+import { usePathname, useRouter } from "next/navigation";
 
 type dataPriceItem = {
   id: string;
@@ -34,6 +36,8 @@ export default function FormPayment({
     setValue,
   } = useForm();
   const [validatorResult, setValidatorResult] = useState<Boolean>(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   const processOrder = async (e: any) => {
     const confirmPayment = confirm("Apakah anda yakin ?");
@@ -41,8 +45,23 @@ export default function FormPayment({
     if (confirmPayment) {
       try {
         if (validator.isMobilePhone(whatsapp, ["id-ID"])) {
-          const process = await createOrder(produk, userId, serverId);
-          console.log(process);
+          const apiGamesInfoBalance = await axios.get(
+            "https://v1.apigames.id/merchant/M231014AFVO7808SQ?signature=a7631b9aaa517c79fcaf7cae2f549704"
+          );
+          const tokoVoucherInfoBalance = await axios.get(
+            "https://api.tokovoucher.id/member?member_code=M231014VXPM4621MZ&signature=028bd100832634e24749224243c1a8f1"
+          );
+
+          if (
+            apiGamesInfoBalance.data.data.saldo > 10000 &&
+            tokoVoucherInfoBalance.data.data.saldo > 10000
+          ) {
+            const process = await createOrder(produk, userId, serverId);
+            console.log(process);
+          } else {
+            alert("Maaf sistem kami sedang sibuk, Coba lagi beberapa saat...");
+            router.push(pathname);
+          }
         } else {
           setValidatorResult(true);
           setTimeout(() => {
