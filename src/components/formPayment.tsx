@@ -46,10 +46,10 @@ export default function FormPayment({
       try {
         if (validator.isMobilePhone(whatsapp, ["id-ID"])) {
           const apiGamesInfoBalance = await axios.get(
-            "https://v1.apigames.id/merchant/M231014AFVO7808SQ?signature=a7631b9aaa517c79fcaf7cae2f549704"
+            `https://v1.apigames.id/merchant/${process.env.NEXT_PUBLIC_APIGAMES_MERCHANT_ID}?signature=${process.env.NEXT_PUBLIC_APIGAMES_SIGNATURE}`
           );
           const tokoVoucherInfoBalance = await axios.get(
-            "https://api.tokovoucher.id/member?member_code=M231014VXPM4621MZ&signature=028bd100832634e24749224243c1a8f1"
+            `https://api.tokovoucher.id/member?member_code=${process.env.NEXT_PUBLIC_TOKOVOUCHER_MEMBER_CODE}&signature=${process.env.NEXT_PUBLIC_TOKOVOUCHER_SIGNATURE}`
           );
 
           if (
