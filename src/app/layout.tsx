@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <AuthProvider>
-      <html lang="en" className="tracking-wide">
+      <html lang="en" className="tracking-wide bg-black">
         <body className={poppins.className}>{children}</body>
       </html>
     </AuthProvider>

@@ -35,7 +35,7 @@ export default function NavbarFooter({ children }: { children: ReactNode }) {
   return (
     <>
       {/* navbar top start */}
-      <div className="bg-base-300 navbar px-6 flex justify-between items-center fixed z-10">
+      <div className="bg-slate-900 navbar px-6 flex justify-between items-center fixed z-10">
         <Link href={"/"} className="flex items-center font-semibold gap-2">
           <Image
             className="rounded-full"
@@ -54,7 +54,7 @@ export default function NavbarFooter({ children }: { children: ReactNode }) {
       <div className="pt-20 mx-4">{children}</div>
 
       {/* footer start */}
-      <footer className="footer py-14 grid justify-center p-4 bg-base-200 text-base-content">
+      <footer className="footer py-14 grid justify-center p-4 bg-slate-900 text-base-content">
         <div className="flex flex-col gap-6 mr-6">
           <Link
             href={"/"}
@@ -121,7 +121,7 @@ export default function NavbarFooter({ children }: { children: ReactNode }) {
             <ul className="mt-8 md:mt-0">
               <h3 className="footer-title text-sm">IKUTI KAMI</h3>
               <div className="grid grid-flow-col md:grid-flow-row md:grid-cols-2 gap-3">
-                <li className="bg-slate-900 transition rounded-full w-12 h-12 btn-secondary btn-outline flex items-center justify-center">
+                <li className="bg-slate-800 transition rounded-full w-12 h-12 btn-secondary btn-outline flex items-center justify-center">
                   <Link
                     href={
                       "https://instagram.com/warungtopupstore_?igshid=MzRlODBiNWFlZA=="
@@ -131,7 +131,7 @@ export default function NavbarFooter({ children }: { children: ReactNode }) {
                     <AiOutlineInstagram size="1.8em" />
                   </Link>
                 </li>
-                <li className="bg-slate-900 transition rounded-full w-12 h-12 btn-accent btn-outline flex items-center justify-center">
+                <li className="bg-slate-800 transition rounded-full w-12 h-12 btn-accent btn-outline flex items-center justify-center">
                   <Link
                     href={"http://tiktok.com/@bigetron.esports09"}
                     target="_blank"
@@ -139,7 +139,7 @@ export default function NavbarFooter({ children }: { children: ReactNode }) {
                     <FaTiktok size="1.5em" />
                   </Link>
                 </li>
-                <li className="bg-slate-900 transition rounded-full w-12 h-12 btn-error btn-outline flex items-center justify-center">
+                <li className="bg-slate-800 transition rounded-full w-12 h-12 btn-error btn-outline flex items-center justify-center">
                   <Link
                     href={
                       "https://youtube.com/@GADGETRIVIEW?si=_BCcatEqQzPyn5aT"
@@ -149,7 +149,7 @@ export default function NavbarFooter({ children }: { children: ReactNode }) {
                     <AiFillYoutube size="1.5em" />
                   </Link>
                 </li>
-                <li className="bg-slate-900 transition rounded-full w-12 h-12 btn-outline flex items-center justify-center">
+                <li className="bg-slate-800 transition rounded-full w-12 h-12 btn-outline flex items-center justify-center">
                   <Link href={"mailto:faelftauraeca@gmail.com"} target="_blank">
                     <GrMail size="1.5em" />
                   </Link>
@@ -167,7 +167,7 @@ export default function NavbarFooter({ children }: { children: ReactNode }) {
         </div>
       </footer>
 
-      <footer className="footer footer-center gap-6 py-6 px-2 bg-base-300 text-base-content md:flex justify-around">
+      <footer className="footer footer-center gap-6 py-6 px-2 text-base-content md:flex justify-around">
         <p className="text-sm">© 2023 Warung Top Up Store. Semua Hak Cipta</p>
         <div className="text-warning flex">
           <Link

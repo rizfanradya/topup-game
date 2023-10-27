@@ -122,7 +122,7 @@ export default function SearchInvoice() {
               id="lacakpesanan"
               type="text"
               placeholder="Masukkan nomor handphonemu cth:(+628123456789)"
-              className="input input-bordered rounded-full w-full h-10"
+              className="input input-bordered rounded-full w-full h-10 bg-slate-950"
             />
           )}
         />

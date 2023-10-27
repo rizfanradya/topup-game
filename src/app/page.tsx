@@ -82,7 +82,7 @@ export default function Home() {
           defaultValue={""}
           render={({ field }) => (
             <input
-              className="input input-bordered input-info rounded-full h-8 w-full text-xs"
+              className="input input-bordered bg-slate-950 input-info rounded-full h-8 w-full text-xs"
               type="text"
               autoComplete="off"
               {...field}

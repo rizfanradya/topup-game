@@ -84,13 +84,13 @@ export default function FormPayment({
         </div>
       )}
 
-      <div className="grid gap-1 bg-base-300 rounded-lg p-4 mb-4">
+      <div className="grid gap-1 bg-slate-900 rounded-lg p-4 mb-4">
         <label className="font-semibold" htmlFor="userId">
           Masukkan User ID
         </label>
         <div className={`grid gap-4 ${serverIdInput ? "grid-cols-2" : ""}`}>
           <input
-            className={`input input-bordered input-info h-9 text-xs text-white ${
+            className={`input input-bordered input-info bg-slate-950 h-9 text-xs text-white ${
               errors.userId && "input-error"
             }`}
             placeholder="Masukkan User ID"
@@ -100,7 +100,7 @@ export default function FormPayment({
           />
           {serverIdInput && (
             <input
-              className={`input input-bordered input-info h-9 text-xs text-white ${
+              className={`input input-bordered input-info bg-slate-950 h-9 text-xs text-white ${
                 errors.serverId && "input-error"
               }`}
               placeholder="Masukkan Server ID"
@@ -111,7 +111,7 @@ export default function FormPayment({
         </div>
       </div>
 
-      <div className="grid gap-1 bg-base-300 rounded-lg p-4 mb-4">
+      <div className="grid gap-1 bg-slate-900 rounded-lg p-4 mb-4">
         <label className="font-semibold">Pilih Nominal Top Up</label>
 
         {errors.priceItem && (
@@ -138,14 +138,14 @@ export default function FormPayment({
                   />
 
                   <label
-                    className="flex flex-col p-3 cursor-pointer bg-base-100 rounded-lg labelOption hover:ring hover:ring-sky-500 transition"
+                    className="flex flex-col p-3 cursor-pointer bg-slate-800 rounded-lg labelOption hover:ring hover:ring-sky-500 transition"
                     htmlFor={doc.id}
                   >
                     <div>
-                      <p className="uppercase text-xs font-medium mb-1">
+                      <p className="uppercase text-xs font-medium mb-1 text-white">
                         {doc.nameItem}
                       </p>
-                      <p className="text-[10px]">
+                      <p className="text-[10px] text-white">
                         Rp {doc.price.toLocaleString()}
                       </p>
                     </div>
@@ -157,7 +157,7 @@ export default function FormPayment({
         ))}
       </div>
 
-      <div className="grid gap-1 bg-base-300 rounded-lg p-4 mb-4">
+      <div className="grid gap-1 bg-slate-900 rounded-lg p-4 mb-4">
         <div className="grid">
           <label htmlFor="nowa" className="font-semibold">
             Nomor Whatsapp
@@ -171,7 +171,7 @@ export default function FormPayment({
         </div>
 
         <input
-          className={`input input-bordered input-info h-9 text-xs text-white ${
+          className={`input input-bordered input-info bg-slate-950 h-9 text-xs text-white ${
             errors.whatsapp || validatorResult ? "input-error" : ""
           }`}
           id="nowa"
