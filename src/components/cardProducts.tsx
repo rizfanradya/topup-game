@@ -8,14 +8,15 @@ export default function CardProducts({
   data: any;
   searchValue: any;
 }) {
-  const filteredData = data.filter((item: { title: any; dev: any }) => {
-    const { title, dev } = item;
-    const searchKeyword = searchValue.toLowerCase();
-    return (
-      title.toLowerCase().includes(searchKeyword) ||
-      dev.toLowerCase().includes(searchKeyword)
-    );
-  });
+  const filteredData = data.filter(
+    ({ title, dev }: { title: any; dev: any }) => {
+      const searchKeyword = searchValue.toLowerCase();
+      return (
+        title.toLowerCase().includes(searchKeyword) ||
+        dev.toLowerCase().includes(searchKeyword)
+      );
+    }
+  );
 
   return (
     <div className="my-4">

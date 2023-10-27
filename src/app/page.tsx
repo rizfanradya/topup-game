@@ -68,7 +68,7 @@ export default function Home() {
       }
     };
     fetchData();
-  }, [topupGames]);
+  }, []);
 
   const { control, watch } = useForm();
   const searchValue = watch("search", "");
