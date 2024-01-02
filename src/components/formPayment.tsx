@@ -53,11 +53,18 @@ export default function FormPayment({
           );
 
           if (
-            apiGamesInfoBalance.data.data.saldo > 10000 &&
-            tokoVoucherInfoBalance.data.data.saldo > 10000
+            (apiGamesInfoBalance.data.data.saldo > 10000 &&
+              tokoVoucherInfoBalance.data.data.saldo > 10000) ||
+            true
           ) {
-            const process = await createOrder(produk, userId, serverId);
-            console.log(process);
+            // const process = await createOrder(produk, userId, serverId);
+            // console.log(process);
+            const midtrans = await axios.post("/api/midtrans", {
+              gross_amount: 1,
+              first_name: "hallo world",
+            });
+            console.log(midtrans.data.transaction.redirect_url);
+            router.push(midtrans.data.transaction.redirect_url);
           } else {
             alert("Maaf sistem kami sedang sibuk, Coba lagi beberapa saat...");
             router.push(pathname);
