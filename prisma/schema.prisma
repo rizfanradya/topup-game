@@ -1,25 +1,33 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model admin {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  username  String
+model user {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String
+  name      String
+  noHp      String
+  role      String
   password  String
+  status    Boolean
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model products {
-  id                String              @id @default(auto()) @map("_id") @db.ObjectId
+  id                Int                 @id @default(autoincrement())
   title             String
   dev               String
   background        String
@@ -28,32 +36,27 @@ model products {
   serverIdInput     Boolean
   productTypeValue  String
   productsPriceType productsPriceType[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt         DateTime            @default(now())
+  updatedAt         DateTime            @updatedAt
 }
 
 model productsPriceType {
-  id        String      @id @default(auto()) @map("_id") @db.ObjectId
-  nameType  String
-  priceItem priceItem[]
-
-  productsPrice   products @relation(fields: [productsPriceId], references: [id])
-  productsPriceId String   @db.ObjectId
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id              Int         @id @default(autoincrement())
+  nameType        String
+  priceItem       priceItem[]
+  productsPrice   products    @relation(fields: [productsPriceId], references: [id])
+  productsPriceId Int
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
 }
 
 model priceItem {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  id          Int               @id @default(autoincrement())
   nameItem    String
   priceItemId String
   price       Int
-
-  item   productsPriceType @relation(fields: [itemId], references: [id])
-  itemId String            @db.ObjectId
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  item        productsPriceType @relation(fields: [itemId], references: [id])
+  itemId      Int
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
 }

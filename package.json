@@ -6,10 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "initdb": "npx prisma migrate dev && npx prisma generate && npx prisma db push"
   },
   "dependencies": {
-    "@prisma/client": "^5.12.1",
+    "@prisma/client": "^5.13.0",
     "@types/bcrypt": "^5.0.2",
     "@types/md5": "^2.3.5",
     "@types/validator": "^13.11.9",
@@ -19,7 +20,7 @@
     "md5": "^2.3.0",
     "midtrans-client": "^1.3.1",
     "nanoid": "^5.0.7",
-    "next": "14.2.1",
+    "next": "14.2.3",
     "next-auth": "^4.24.7",
     "react": "^18",
     "react-dom": "^18",
@@ -37,9 +38,9 @@
     "autoprefixer": "^10",
     "daisyui": "^4.10.2",
     "eslint": "^8",
-    "eslint-config-next": "14.2.1",
+    "eslint-config-next": "14.2.3",
     "postcss": "^8",
-    "prisma": "^5.12.1",
+    "prisma": "^5.13.0",
     "tailwindcss": "^3",
     "typescript": "^5"
   }
