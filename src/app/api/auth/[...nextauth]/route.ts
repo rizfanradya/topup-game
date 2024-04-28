@@ -21,11 +21,11 @@ const authOptions: NextAuthOptions = {
           password: string;
         };
         const prisma = new PrismaClient();
-        const user = await prisma.admin.findMany();
-        if (!user[0].username) throw new Error("email mismatch");
-        const passwordMatch = await bcrypt.compare(password, user[0].password);
+        const user: any = await prisma.user.findFirst({ where: { username } });
+        if (!user.username) throw new Error("email mismatch");
+        const passwordMatch = await bcrypt.compare(password, user.password);
         if (!passwordMatch) throw new Error("password mismatch");
-        return { username: user[0].username, id: user[0].id };
+        return { username: user.username, id: user.id };
       },
     }),
   ],
